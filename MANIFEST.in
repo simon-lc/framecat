@@ -1,0 +1,3 @@
+include cli/render.py
+include example/demo.py
+include assets/demo.tar
