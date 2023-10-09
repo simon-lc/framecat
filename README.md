@@ -1,5 +1,5 @@
 ## Rendering
-[![build](https://github.com/simon-lc/rendering/actions/workflows/build.yml/badge.svg)](https://github.com/simon-lc/rendering/actions/workflows/build.yml)
+[![build](https://github.com/simon-lc/framecat/actions/workflows/build.yml/badge.svg)](https://github.com/simon-lc/framecat/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/simon-lc/rendering/graph/badge.svg?token=YEZRWACCG1)](https://codecov.io/gh/simon-lc/rendering)
 
 **Use this tool to automate video and gif generation from (Meshcat-generated) frame sequences.**
