@@ -4,6 +4,10 @@
 
 **Use this tool to automate video and gif generation from (Meshcat-generated) frame sequences.**
 
+### Install package
+```
+pip install framecat
+```
 ### Install external libraries
 **FFmpeg**
 ```
