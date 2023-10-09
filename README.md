@@ -1,7 +1,6 @@
 ## FrameCat
 [![build](https://github.com/simon-lc/framecat/actions/workflows/build.yml/badge.svg)](https://github.com/simon-lc/framecat/actions/workflows/build.yml)
-[![codecov](https://codecov.io/gh/simon-lc/rendering/graph/badge.svg?token=YEZRWACCG1)](https://codecov.io/gh/simon-lc/rendering)
-
+[![codecov](https://codecov.io/gh/simon-lc/framecat/graph/badge.svg?token=CUWTT7EK5E)](https://codecov.io/gh/simon-lc/framecat)
 **Use this tool to automate video and gif generation from (Meshcat-generated) frame sequences.**
 
 ### Install external libraries
