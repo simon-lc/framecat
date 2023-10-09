@@ -27,7 +27,6 @@ def get_latest_files(
     # Use glob to list all ".tar" files in the folder 
     # and sort them by modification time (most recent first)
     ext_files = glob.glob(os.path.join(folder_path, f"*.{extension}"))
-    print(ext_files)
     ext_files.sort(key=os.path.getmtime, reverse=True)
 
     # Check if there are any ".tar" files in the folder
