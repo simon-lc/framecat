@@ -21,9 +21,9 @@ gifsicle --version
 
 ### Quick start
 - Make sure you're not inside a Docker container.
-- `cd` to the `render.py` file. 
+- `cd` to the root folder `~/workspace/framecat`. 
 ```
-slecleach@slecleach-LT ~/workspace/rendering $
+slecleach@slecleach-LT ~/workspace/framecat $
 ```
 
 #### `LATEST` mode
