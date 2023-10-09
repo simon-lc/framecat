@@ -39,7 +39,7 @@ jobs:
         python -m pip install .
 
     - name: Run tests and collect coverage
-      run: pytest --cov rendering -s
+      run: pytest --cov framecat -s
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
