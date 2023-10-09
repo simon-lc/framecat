@@ -23,7 +23,7 @@ gifsicle --version
 - Make sure you're not inside a Docker container.
 - `cd` to the root folder `~/workspace/framecat`. 
 ```
-slecleach@slecleach-LT ~/workspace/framecat $
+user@username~/workspace/framecat$
 ```
 
 #### `LATEST` mode
