@@ -4,6 +4,7 @@ import tarfile
 import tempfile
 import subprocess
 import shutil
+from PIL import Image
 
  
 def rename_file(
@@ -72,7 +73,6 @@ def convert_frames_to_video(
 
         # Extract all the contents to the specified directory
         tar.extractall(path=temp_dir)
-
         # get the file extension
         images = glob.glob(os.path.join(temp_dir, '*'))
         if images:
@@ -80,23 +80,31 @@ def convert_frames_to_video(
             first_image = images[0]
             # Extract the file extension
             image_extension = os.path.splitext(first_image)[-1]
-        cmd = ["ffmpeg", "-r", str(framerate), "-i", "%07d" + image_extension, "-vcodec", "libx264", 
-            "-preset", "slow", "-crf", "18", *conversion_args]
-        if overwrite:
-            cmd.append("-y")
-        cmd.append(output_path)
+            # Extract the image size
+            width, height = Image.open(first_image).size
+            # get the resizing dimensions if the original size were odd.
+            # odd sizes prevent the video and GIF conversions. 
+            width -= width%2 
+            height -= height%2 
 
-        # Change the working directory to the specified folder
-        os.chdir(temp_dir)
+            cmd = ["ffmpeg", "-r", str(framerate), "-i", "%07d" + image_extension, 
+                "-vf", "scale=" + str(width) + ":" + str(height), "-vcodec", "libx264", 
+                "-preset", "slow", "-crf", "18", *conversion_args]
+            if overwrite:
+                cmd.append("-y")
+            cmd.append(output_path)
 
-        # Specify the FFMPEG command you want to execute
-        ffmpeg_command = " ".join(cmd)
+            # Change the working directory to the specified folder
+            os.chdir(temp_dir)
 
-        # Execute the FFMPEG command using subprocess
-        try:
-            subprocess.run(ffmpeg_command, shell=True, check=True)
-        except subprocess.CalledProcessError as e:
-            print("Error:", e)
+            # Specify the FFMPEG command you want to execute
+            ffmpeg_command = " ".join(cmd)
+
+            # Execute the FFMPEG command using subprocess
+            try:
+                subprocess.run(ffmpeg_command, shell=True, check=True)
+            except subprocess.CalledProcessError as e:
+                print("Error:", e)
 
     # Remove the directory and its contents
     shutil.rmtree(temp_dir)

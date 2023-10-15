@@ -15,7 +15,7 @@ def test_rendering_tool() -> None:
     assets_dir = os.path.join(package_dir, "assets")
     
     # files
-    tar_file_path = os.path.join(assets_dir, "demo.tar")
+    tar_file_path = os.path.join(assets_dir, "demo_odd.tar")
     output_name = "rendering_output"
 
     # rendering parameters

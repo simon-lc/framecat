@@ -22,8 +22,9 @@ latest_case = ["latest", "--input-folder", assets_dir, "--output-folder", assets
          "--hq-colors", "--dont-generate-lossy", "--video-framerate", "60"]
 
 by_name_case = ["by-name", "--input-folder", assets_dir, "--output-folder", assets_dir, 
-         "--input-names", "demo",        
-         "--output-names", "cli_test_by_name", "--dont-rename-input-file",
+         "--input-names", "demo", "demo_odd",        
+         "--output-names", "cli_test_by_name", "cli_test_odd_by_name", 
+         "--dont-rename-input-file",
          "--gif-framerate", "30", "--start-time", "0.0", 
          "--duration", "1e3", "--width", "-1", "--height", "100", 
          "--hq-colors", "--dont-generate-lossy", "--video-framerate", "60"]
@@ -48,32 +49,3 @@ def test_parser(test_input, expected):
     filenames = [os.path.basename(f) for f in files]
     assert(expected + ".mp4" in filenames)
     assert(expected + ".gif" in filenames)
-
-
-
-# @mock.patch('argparse.ArgumentParser.parse_args',
-#             return_value=parse_args(latest_case))
-# def test_main_latest(mock_args):
-#     # generate files in LATEST mode
-#     execute_command(args)
-
-#     # assert that the mp4 and gif files have been created
-#     files = glob.glob(os.path.join(assets_dir, '*'))
-#     assert(files)
-#     filenames = [os.path.basename(f) for f in files]
-#     assert("render_test_latest" + ".mp4" in filenames)
-#     assert("render_test_latest" + ".gif" in filenames)
-
-
-# @mock.patch('argparse.ArgumentParser.parse_args',
-#             return_value=parse_args(by_name_case))
-# def test_main_by_name(mock_args):
-#     # generate files in BY-NAME mode
-#     execute_command(args)
-#     # assert that the mp4 and gif files have been created
-#     files = glob.glob(os.path.join(assets_dir, '*'))
-#     assert(files)
-#     filenames = [os.path.basename(f) for f in files]
-#     assert("render_test_by_name" + ".mp4" in filenames)
-#     assert("render_test_by_name" + ".gif" in filenames)
-
