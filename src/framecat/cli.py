@@ -75,7 +75,6 @@ def execute_command(args):
         )
     
     if args.input_mode == InputMode.LATEST:
-        print("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW")
         if args.output_names:    
             num_files = len(args.output_names)
             tar_files = get_latest_files(args.input_folder, num_files) 
