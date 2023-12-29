@@ -41,7 +41,6 @@ convert_video_to_gif(
     width = -1, 
     height = 100, 
     hq_colors = True,
-    generate_lossy = True,
     )
     
 #%%

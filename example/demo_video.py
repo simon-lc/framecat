@@ -1,12 +1,6 @@
 #%%
 import os
-from framecat.rendering import (
-    get_latest_files, 
-    convert_frames_to_video, 
-    render_file, 
-    convert_video_to_gif,
-    RenderingParameters,
-)
+from framecat.rendering import convert_video_to_gif
 
 #%%
 # directories
@@ -20,18 +14,7 @@ print(video_file_path)
 
 #%%
 output_name = "output"
-# video_file_path = os.path.join(assets_dir, output_name + ".mp4")
 gif_file_path = os.path.join(assets_dir, output_name + ".gif")
-
-
-#%%
-# convert_frames_to_video(
-#     tar_file_path, 
-#     output_path = video_file_path, 
-#     framerate = 60, 
-#     overwrite = True, 
-#     conversion_args = (),
-#     )
 
 #%%
 convert_video_to_gif(
@@ -44,7 +27,6 @@ convert_video_to_gif(
     width = -1, 
     height = 600, 
     hq_colors = False,
-    # generate_lossy = True,
     )
     
 #%%
