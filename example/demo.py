@@ -1,9 +1,9 @@
 #%%
 import os
-from src.framecat.utils import (
+from framecat.rendering import (
     get_latest_files, 
     convert_frames_to_video, 
-    generate_meshcat_rendering, 
+    render_file, 
     convert_video_to_gif,
     RenderingParameters,
 )
@@ -51,7 +51,7 @@ params = RenderingParameters(
     rename_input_file=False,
     )
     
-generate_meshcat_rendering(
+render_file(
     tar_file_path, 
     output_name,
     assets_dir,

@@ -21,3 +21,7 @@ requires-python = ">=3.9"
 
 [tool.coverage.run]
 source = ["./src/framecat"]
+
+
+[project.scripts]
+framecat = "framecat.cli:main"

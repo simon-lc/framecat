@@ -1,7 +1,7 @@
 import os
 import glob
-from framecat.utils import (
-    generate_meshcat_rendering, 
+from framecat.rendering import (
+    render_file, 
     get_latest_files,
     RenderingParameters, 
 )
@@ -16,7 +16,7 @@ def test_rendering_tool() -> None:
     
     # files
     tar_file_path = os.path.join(assets_dir, "demo_odd.tar")
-    output_name = "rendering_output"
+    output_name = "from_tar_output"
 
     # rendering parameters
     params = RenderingParameters(
@@ -26,7 +26,7 @@ def test_rendering_tool() -> None:
         )
 
     # generate video and gif from frames
-    generate_meshcat_rendering(
+    render_file(
         tar_file_path, 
         output_name,
         output_folder = assets_dir,
@@ -52,3 +52,29 @@ def test_rendering_tool() -> None:
     assert(os.path.abspath(latest_path) == os.path.abspath(gif_path))
 
 
+    # generate gif from video
+    mp4_file_path = os.path.join(assets_dir, "from_tar_output.mp4")
+    output_name = "from_video_output"
+    render_file(
+        mp4_file_path, 
+        output_name,
+        output_folder = assets_dir,
+        params = params,
+        )
+    
+    # assert that last created gif file is the gif we just wrote
+    gif_path = os.path.join(assets_dir, output_name + ".gif")
+    latest_path = get_latest_files(assets_dir, num_files=1, extension="gif")[0]
+    assert(os.path.abspath(latest_path) == os.path.abspath(gif_path))
+
+
+    # generate compressed gif from gif
+    # this won't generate a gif as gifsicle is not available on github actions
+    gif_file_path = os.path.join(assets_dir, "from_tar_output.gif")
+    output_name = "from_gif_output"
+    render_file(
+        gif_file_path, 
+        output_name,
+        output_folder = assets_dir,
+        params = params,
+        )

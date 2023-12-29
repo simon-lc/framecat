@@ -5,8 +5,15 @@ import tempfile
 import subprocess
 import shutil
 from PIL import Image
+from pathlib import Path
+from typing import Optional
 
- 
+class InputType:
+    TAR = "tar"
+    MP4 = "mp4"
+    GIF = "gif"
+
+
 def rename_file(
     file_path: str, 
     new_file_name: str, 
@@ -18,6 +25,7 @@ def rename_file(
     # Rename the file
     os.rename(file_path, new_file_path)
     return new_file_path
+
 
 def get_latest_files(
     folder_path: str, 
@@ -41,6 +49,7 @@ def get_latest_files(
     else:
         print(f"No .{extension} files found in {folder_path}.")
 
+
 def convert_frames_to_video(
     tar_file_path: str, 
     output_path: str = "output.mp4", 
@@ -48,12 +57,7 @@ def convert_frames_to_video(
     overwrite: bool = False, 
     conversion_args = ()):
 
-    """To record an animation which has been played in the meshcat visualizer, click
-    "Open Controls", then navigate to the "Animations" folder and click "record".
-    This will step through the animation frame-by-frame and then prompt you to
-    download a `.tar` file containing the resulting frames. You can then pass the
-    path to that `.tar` file to this function to produce a video.
-    You can pass additional arguments for the video conversion, for 
+    """You can pass arguments for the video conversion, for 
     example, `conversion_args=("-pix_fmt", "yuv420p")` to create videos playable in 
     Windows.
     """
@@ -112,6 +116,7 @@ def convert_frames_to_video(
     print(f"Saved output as {output_path}")
     return output_path
 
+
 def convert_video_to_gif(
     video_file_path: str, 
     output_path: str = "output.gif",
@@ -122,7 +127,6 @@ def convert_video_to_gif(
     width: int = -1, 
     height: int = 1080, 
     hq_colors: bool = False,
-    generate_lossy: bool = False,
     ):
     
     output_path = os.path.abspath(output_path)
@@ -161,22 +165,42 @@ def convert_video_to_gif(
         except subprocess.CalledProcessError as e:
             print("Error:", e)
 
-        if generate_lossy:
-            gifsicle_output_path = output_path[:-4] + "_lossy.gif"
-            print("gifs = ", gifsicle_output_path)
-            gifsicle_command = f"gifsicle -O3 -k128 --lossy=100 --verbose {output_path} -o {gifsicle_output_path}"
-
-            # Execute the gifsicle command using subprocess
-            try:
-                subprocess.run(gifsicle_command, shell=True, check=True)
-            except subprocess.CalledProcessError as e:
-                print("Error:", e)
-
     # Remove the directory and its contents
     shutil.rmtree(temp_dir)
 
-    print(f"Saved output as {output_path}")
+    print(f"Saved GIF as {output_path}")
     return output_path
+
+
+def compress_gif(
+    file_path: str, 
+    output_path: Optional[str] = None,
+    overwrite: bool = False, 
+    ):
+    
+    if not os.path.isfile(file_path):
+        print("Could not find the input file $file_path")
+    
+    if output_path is None:
+        output_path = file_path[:-4] + "_lossy.gif"
+    output_path = os.path.abspath(output_path)
+
+    if os.path.isfile(output_path) and not overwrite:
+        print("The output path $output_path already exists. \
+              To overwrite that file, you can pass `overwrite=true` to this function")
+
+    if overwrite:
+        gifsicle_command = f"gifsicle -O3 -k128 --lossy=100 --verbose {file_path} -o {output_path}"
+        # Execute the gifsicle command using subprocess
+        try:
+            print("Executing the gifsicle command.")
+            subprocess.run(gifsicle_command, shell=True, check=True)
+        except subprocess.CalledProcessError as e:
+            print("Error:", e)
+
+    print(f"Saved lossy GIF as {output_path}")
+    return output_path
+
 
 class RenderingParameters:
     def __init__(
@@ -205,46 +229,77 @@ class RenderingParameters:
         self.video_framerate = video_framerate
         self.video_conversion_args = video_conversion_args
 
-def generate_meshcat_rendering(
-    tar_file_path: str, 
+
+def get_input_type(file_path: str):
+    path = Path(file_path)
+    extension = path.suffix.lower()[1:]
+    for input_type in [InputType.TAR, InputType.MP4, InputType.GIF]:
+        if input_type.lower() == extension:
+            return input_type
+    # If no matching input type is found, we raise a specific exception.
+    raise ValueError(f"Unknown extension: {extension}")
+
+
+def render_file(
+    file_path: str, 
     output_name: str,
     output_folder: str = None,
     params: RenderingParameters = RenderingParameters(),
     ):
-
+        
     if output_folder is None:
         # Get the user's home directory
         home_directory = os.path.expanduser("~")
-        output_folder = os.path.join(home_directory, "Videos", "meshcat")
+        output_folder = os.path.join(home_directory, "Videos", "framecat")
 
-    video_file_path = os.path.join(output_folder, output_name + ".mp4")
-    gif_file_path = os.path.join(output_folder, output_name + ".gif")
+    input_type = get_input_type(file_path)
 
-    if params.rename_input_file:
-        tar_file_path = rename_file(
+    # Frames to video
+    if input_type == InputType.TAR:
+        tar_file_path = file_path
+        video_output_file_path = os.path.join(output_folder, output_name + ".mp4")
+
+        if params.rename_input_file:
+            tar_file_path = rename_file(
+                tar_file_path, 
+                output_name + ".tar", 
+                )
+
+        convert_frames_to_video(
             tar_file_path, 
-            output_name + ".tar", 
+            output_path = video_output_file_path, 
+            framerate = params.video_framerate, 
+            overwrite = params.overwrite, 
+            conversion_args = params.video_conversion_args,
             )
-
-    convert_frames_to_video(
-        tar_file_path, 
-        output_path = video_file_path, 
-        framerate = params.video_framerate, 
-        overwrite = params.overwrite, 
-        conversion_args = params.video_conversion_args,
-        )
+        video_input_file_path = video_output_file_path
     
-    convert_video_to_gif(
-        video_file_path, 
-        output_path = gif_file_path,
-        framerate = params.gif_framerate, 
-        start_time = params.start_time, 
-        duration = params.duration, 
-        overwrite = params.overwrite, 
-        width = params.width, 
-        height = params.height, 
-        hq_colors = params.hq_colors,
-        generate_lossy = params.generate_lossy,
-        )
+    # Video to GIF
+    if input_type in [InputType.TAR, InputType.MP4]:
+        if input_type == InputType.MP4:
+            video_input_file_path = file_path
+        gif_output_file_path = os.path.join(output_folder, output_name + ".gif")
+        
+        convert_video_to_gif(
+            video_input_file_path, 
+            output_path = gif_output_file_path,
+            framerate = params.gif_framerate, 
+            start_time = params.start_time, 
+            duration = params.duration, 
+            overwrite = params.overwrite, 
+            width = params.width, 
+            height = params.height, 
+            hq_colors = params.hq_colors,
+            )
+    
+        gif_input_file_path = gif_output_file_path
 
-
+    # GIF to small memory footprint GIF
+    if params.generate_lossy:
+        if input_type == InputType.GIF:
+            gif_input_file_path = file_path
+        compress_gif(
+            gif_input_file_path, 
+            output_path = None,
+            overwrite = params.overwrite, 
+            )
