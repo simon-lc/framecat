@@ -91,12 +91,16 @@ def execute_command(args):
             files = get_latest_files(args.input_folder, num_files, extension=extension) 
 
     elif args.input_mode == InputMode.BY_NAME:
-        if args.input_names and args.output_names:
+        ni = 0 if args.input_names is None else len(args.input_names)
+        no = 0 if args.output_names is None else len(args.output_names)
+        assert ni >= no
+        if args.input_names:
             files = []
-            for input_name in args.input_names:
+            for (i, input_name) in enumerate(args.input_names):
                 files.append(os.path.join(args.input_folder, input_name + "." + extension))
-        
-            num_files = min(len(args.input_names), len(args.output_names))
+                if i >= no:
+                    args.output_names.append(input_name)
+            num_files = len(files)
 
     for i in range(num_files):
         render_file(
