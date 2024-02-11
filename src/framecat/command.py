@@ -91,8 +91,12 @@ def execute_command(args):
             files = get_latest_files(args.input_folder, num_files, extension=extension) 
 
     elif args.input_mode == InputMode.BY_NAME:
-        ni = 0 if args.input_names is None else len(args.input_names)
-        no = 0 if args.output_names is None else len(args.output_names)
+        if args.input_names is None:
+            args.input_names = []
+        ni = len(args.input_names)
+        if args.output_names is None:
+            args.output_names = []
+        no = len(args.output_names)
         assert ni >= no
         if args.input_names:
             files = []

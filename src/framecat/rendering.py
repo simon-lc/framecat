@@ -252,6 +252,10 @@ def render_file(
         home_directory = os.path.expanduser("~")
         output_folder = os.path.join(home_directory, "Videos", "framecat")
 
+    # Check if output folder exists, if not, create it
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
     input_type = get_input_type(file_path)
 
     # Frames to video
