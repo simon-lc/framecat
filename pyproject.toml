@@ -12,6 +12,7 @@ authors = [
 ]
 
 dependencies = [
+    "colorlog>=6.8.2",
     "pytest>=7.4.2",
     "pytest-cov>=4.1.0",
     "pillow>=9.0.0",

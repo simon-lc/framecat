@@ -1,12 +1,33 @@
 import os
 import glob
+import logging
 import tarfile
 import tempfile
 import subprocess
 import shutil
+import colorlog
 from PIL import Image
 from pathlib import Path
-from typing import Optional
+
+# Set up logging configuration with colorlog
+handler = colorlog.StreamHandler()
+handler.setFormatter(colorlog.ColoredFormatter(
+    '%(log_color)s[%(levelname)s] - %(message)s',
+    datefmt=None,
+    reset=True,
+    log_colors={
+        'DEBUG': 'cyan',
+        'INFO': 'green',
+        'WARNING': 'light_yellow',
+        'ERROR': 'red',
+        'CRITICAL': 'bold_red',
+    }
+))
+
+logger = colorlog.getLogger()
+logger.setLevel(logging.INFO)
+logger.addHandler(handler)
+
 
 class InputType:
     TAR = "tar"
@@ -17,13 +38,14 @@ class InputType:
 def rename_file(
     file_path: str, 
     new_file_name: str, 
-    ):
+    ) -> str:
 
     folder_path = os.path.dirname(file_path)
     new_file_path = os.path.join(folder_path, new_file_name)
 
     # Rename the file
     os.rename(file_path, new_file_path)
+    logging.info(f"Renamed file from {file_path} to {new_file_path}")
     return new_file_path
 
 
@@ -31,7 +53,7 @@ def get_latest_files(
     folder_path: str, 
     num_files: int = 1, 
     extension: str = "tar",
-    ):
+    ) -> list:
 
     # Use glob to list all ".tar" files in the folder 
     # and sort them by modification time (most recent first)
@@ -42,12 +64,14 @@ def get_latest_files(
     if ext_files:
         # Print the most recent ".tar" file
         if num_files > len(ext_files):
-            print(f"There are only {len(ext_files)} .{extension} files in {folder_path}.")
+            logging.warning(f"There are only {len(ext_files)} .{extension} files in {folder_path}.")
             num_files = len(ext_files)
         file_paths = ext_files[0:num_files]
+        logging.info(f"Found {len(file_paths)} .{extension} files in {folder_path}")
         return file_paths
     else:
-        print(f"No .{extension} files found in {folder_path}.")
+        logging.warning(f"No .{extension} files found in {folder_path}.")
+        return []
 
 
 def convert_frames_to_video(
@@ -55,7 +79,7 @@ def convert_frames_to_video(
     output_path: str = "output.mp4", 
     framerate: int = 60, 
     overwrite: bool = False, 
-    conversion_args = ()):
+    conversion_args: tuple = ()) -> str:
 
     """You can pass arguments for the video conversion, for 
     example, `conversion_args=("-pix_fmt", "yuv420p")` to create videos playable in 
@@ -65,9 +89,9 @@ def convert_frames_to_video(
     output_path = os.path.abspath(output_path)
 
     if not os.path.isfile(tar_file_path):
-        print(f"Could not find the input file {tar_file_path}")
+        logging.warning(f"Could not find the input file {tar_file_path}")
     if os.path.isfile(output_path) and not overwrite:
-        print(f"The output path {output_path} already exists. \
+        logging.warning(f"The output path {output_path} already exists. \
             To overwrite that file, you can pass `overwrite=true` to this function")
 
     # Open the tar file for reading
@@ -108,12 +132,12 @@ def convert_frames_to_video(
             try:
                 subprocess.run(ffmpeg_command, shell=True, check=True)
             except subprocess.CalledProcessError as e:
-                print("Error:", e)
+                logging.error("Error:", e)
 
     # Remove the directory and its contents
     shutil.rmtree(temp_dir)
 
-    print(f"Saved output as {output_path}")
+    logging.info(f"Saved output as {output_path}")
     return output_path
 
 
@@ -125,16 +149,16 @@ def convert_video_to_gif(
     duration: float = 1e3, 
     overwrite: bool = False, 
     width: int = -1, 
-    height: int = 1080, 
+    height: int = -1, 
     hq_colors: bool = False,
-    ):
+    ) -> str:
     
     output_path = os.path.abspath(output_path)
 
     if not os.path.isfile(video_file_path):
-        print("Could not find the input file $video_file_path")
+        logging.warning("Could not find the input file $video_file_path")
     if os.path.isfile(output_path) and not overwrite:
-        print("The output path $output_path already exists. \
+        logging.warning("The output path $output_path already exists. \
               To overwrite that file, you can pass `overwrite=true` to this function")
 
     # Create a temporary directory
@@ -163,42 +187,42 @@ def convert_video_to_gif(
         try:
             subprocess.run(ffmpeg_command, shell=True, check=True)
         except subprocess.CalledProcessError as e:
-            print("Error:", e)
+            logging.error("Error:", e)
 
     # Remove the directory and its contents
     shutil.rmtree(temp_dir)
 
-    print(f"Saved GIF as {output_path}")
+    logging.info(f"Saved GIF as {output_path}")
     return output_path
 
 
 def compress_gif(
     file_path: str, 
-    output_path: Optional[str] = None,
+    output_path: str | None = None,
     overwrite: bool = False, 
-    ):
+    ) -> str:
     
     if not os.path.isfile(file_path):
-        print("Could not find the input file $file_path")
+        logging.warning("Could not find the input file $file_path")
     
     if output_path is None:
         output_path = file_path[:-4] + "_lossy.gif"
     output_path = os.path.abspath(output_path)
 
     if os.path.isfile(output_path) and not overwrite:
-        print("The output path $output_path already exists. \
+        logging.warning("The output path $output_path already exists. \
               To overwrite that file, you can pass `overwrite=true` to this function")
 
     if overwrite:
         gifsicle_command = f"gifsicle -O3 -k128 --lossy=100 --verbose {file_path} -o {output_path}"
         # Execute the gifsicle command using subprocess
         try:
-            print("Executing the gifsicle command.")
+            logging.info("Executing the gifsicle command.")
             subprocess.run(gifsicle_command, shell=True, check=True)
         except subprocess.CalledProcessError as e:
-            print("Error:", e)
+            logging.error("Error:", e)
 
-    print(f"Saved lossy GIF as {output_path}")
+    logging.info(f"Saved lossy GIF as {output_path}")
     return output_path
 
 
@@ -211,12 +235,12 @@ class RenderingParameters:
         start_time: float = 0.0, 
         duration: float = 1e3, 
         width: int = -1, 
-        height: int = 1080, 
+        height: int = -1, 
         hq_colors: bool = False,
         generate_lossy: bool = False,
         video_framerate: int = 60, 
-        video_conversion_args = (),
-    ):
+        video_conversion_args: tuple = (),
+    ) -> None:
         self.overwrite = overwrite
         self.rename_input_file = rename_input_file
         self.gif_framerate = gif_framerate
@@ -230,7 +254,7 @@ class RenderingParameters:
         self.video_conversion_args = video_conversion_args
 
 
-def get_input_type(file_path: str):
+def get_input_type(file_path: str) -> InputType:
     path = Path(file_path)
     extension = path.suffix.lower()[1:]
     for input_type in [InputType.TAR, InputType.MP4, InputType.GIF]:
@@ -243,9 +267,9 @@ def get_input_type(file_path: str):
 def render_file(
     file_path: str, 
     output_name: str,
-    output_folder: str = None,
+    output_folder: str | None = None,
     params: RenderingParameters = RenderingParameters(),
-    ):
+    ) -> None:
         
     if output_folder is None:
         # Get the user's home directory

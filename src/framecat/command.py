@@ -53,7 +53,7 @@ def parse_args(args):
                         help="Duration of the GIF extracted from video.")
     parser.add_argument("--width", type=int, default=-1, 
                         help="GIF width in pixel, -1 preserves the aspect ratio.")
-    parser.add_argument("--height", type=int, default=1080, 
+    parser.add_argument("--height", type=int, default=-1, 
                         help="GIF height in pixel, -1 preserves the aspect ratio.")
     parser.add_argument("--hq-colors", action="store_true", 
                         help="Generate high quality colors for the GIF, \
@@ -104,8 +104,8 @@ def execute_command(args):
                 files.append(os.path.join(args.input_folder, input_name + "." + extension))
                 if i >= no:
                     args.output_names.append(input_name)
-            num_files = len(files)
 
+    num_files = len(files)
     for i in range(num_files):
         render_file(
             files[i],
