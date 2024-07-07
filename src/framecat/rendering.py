@@ -141,18 +141,6 @@ def convert_video_to_gif(
     # Create a temporary directory
     temp_dir = tempfile.mkdtemp()
 
-    # Resize to preserve aspect ratio
-    if width == -1 and height == -1: # use original size
-        pass
-    elif width == -1 and height >= 0: # user-defined height, apsect ratio preserved 
-        pass
-    elif width >= 0 and height == -1: # user-defined width, apsect ratio preserved
-        pass
-    elif width >= 0 and height >= 0: # user-defined width, apsect ratio preserved
-        pass 
-    else:
-        print("Wrong width, height specification. Width and height must be integers >= -1.",
-              f"Given values width = {width}, height = {height}.")
     if overwrite:
         if hq_colors:
             color_map = f"\"[0:v] fps={framerate}, scale={width}:{height}, \
