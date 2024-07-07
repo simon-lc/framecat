@@ -6,7 +6,7 @@ import subprocess
 import shutil
 from PIL import Image
 from pathlib import Path
-from typing import Optional
+
 
 class InputType:
     TAR = "tar"
@@ -17,7 +17,7 @@ class InputType:
 def rename_file(
     file_path: str, 
     new_file_name: str, 
-    ):
+    ) -> str:
 
     folder_path = os.path.dirname(file_path)
     new_file_path = os.path.join(folder_path, new_file_name)
@@ -31,7 +31,7 @@ def get_latest_files(
     folder_path: str, 
     num_files: int = 1, 
     extension: str = "tar",
-    ):
+    ) -> list:
 
     # Use glob to list all ".tar" files in the folder 
     # and sort them by modification time (most recent first)
@@ -48,6 +48,7 @@ def get_latest_files(
         return file_paths
     else:
         print(f"No .{extension} files found in {folder_path}.")
+        return []
 
 
 def convert_frames_to_video(
@@ -55,7 +56,7 @@ def convert_frames_to_video(
     output_path: str = "output.mp4", 
     framerate: int = 60, 
     overwrite: bool = False, 
-    conversion_args = ()):
+    conversion_args: tuple = ()) -> str:
 
     """You can pass arguments for the video conversion, for 
     example, `conversion_args=("-pix_fmt", "yuv420p")` to create videos playable in 
@@ -127,7 +128,7 @@ def convert_video_to_gif(
     width: int = -1, 
     height: int = 1080, 
     hq_colors: bool = False,
-    ):
+    ) -> str:
     
     output_path = os.path.abspath(output_path)
 
@@ -174,9 +175,9 @@ def convert_video_to_gif(
 
 def compress_gif(
     file_path: str, 
-    output_path: Optional[str] = None,
+    output_path: str | None = None,
     overwrite: bool = False, 
-    ):
+    ) -> str:
     
     if not os.path.isfile(file_path):
         print("Could not find the input file $file_path")
@@ -215,8 +216,8 @@ class RenderingParameters:
         hq_colors: bool = False,
         generate_lossy: bool = False,
         video_framerate: int = 60, 
-        video_conversion_args = (),
-    ):
+        video_conversion_args: tuple = (),
+    ) -> None:
         self.overwrite = overwrite
         self.rename_input_file = rename_input_file
         self.gif_framerate = gif_framerate
@@ -230,7 +231,7 @@ class RenderingParameters:
         self.video_conversion_args = video_conversion_args
 
 
-def get_input_type(file_path: str):
+def get_input_type(file_path: str) -> InputType:
     path = Path(file_path)
     extension = path.suffix.lower()[1:]
     for input_type in [InputType.TAR, InputType.MP4, InputType.GIF]:
@@ -243,9 +244,9 @@ def get_input_type(file_path: str):
 def render_file(
     file_path: str, 
     output_name: str,
-    output_folder: str = None,
+    output_folder: str | None = None,
     params: RenderingParameters = RenderingParameters(),
-    ):
+    ) -> None:
         
     if output_folder is None:
         # Get the user's home directory

@@ -56,7 +56,7 @@ test_cases = [
 ]
 
 @pytest.mark.parametrize("test_input,expected", test_cases)
-def test_parser(test_input, expected):
+def test_parser(test_input: list, expected: str) -> None:
     # test that the input arguments are parsed correctly.
     args = parse_args(test_input)
     assert(type(args) == argparse.Namespace)

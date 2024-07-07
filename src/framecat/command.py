@@ -104,8 +104,8 @@ def execute_command(args):
                 files.append(os.path.join(args.input_folder, input_name + "." + extension))
                 if i >= no:
                     args.output_names.append(input_name)
-            num_files = len(files)
 
+    num_files = len(files)
     for i in range(num_files):
         render_file(
             files[i],
