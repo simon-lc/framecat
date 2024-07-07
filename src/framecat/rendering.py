@@ -1,11 +1,32 @@
 import os
 import glob
+import logging
 import tarfile
 import tempfile
 import subprocess
 import shutil
+import colorlog
 from PIL import Image
 from pathlib import Path
+
+# Set up logging configuration with colorlog
+handler = colorlog.StreamHandler()
+handler.setFormatter(colorlog.ColoredFormatter(
+    '%(log_color)s[%(levelname)s] - %(message)s',
+    datefmt=None,
+    reset=True,
+    log_colors={
+        'DEBUG': 'cyan',
+        'INFO': 'green',
+        'WARNING': 'light_yellow',
+        'ERROR': 'red',
+        'CRITICAL': 'bold_red',
+    }
+))
+
+logger = colorlog.getLogger()
+logger.setLevel(logging.INFO)
+logger.addHandler(handler)
 
 
 class InputType:
@@ -24,6 +45,7 @@ def rename_file(
 
     # Rename the file
     os.rename(file_path, new_file_path)
+    logging.info(f"Renamed file from {file_path} to {new_file_path}")
     return new_file_path
 
 
@@ -42,12 +64,13 @@ def get_latest_files(
     if ext_files:
         # Print the most recent ".tar" file
         if num_files > len(ext_files):
-            print(f"There are only {len(ext_files)} .{extension} files in {folder_path}.")
+            logging.warning(f"There are only {len(ext_files)} .{extension} files in {folder_path}.")
             num_files = len(ext_files)
         file_paths = ext_files[0:num_files]
+        logging.info(f"Found {len(file_paths)} .{extension} files in {folder_path}")
         return file_paths
     else:
-        print(f"No .{extension} files found in {folder_path}.")
+        logging.warning(f"No .{extension} files found in {folder_path}.")
         return []
 
 
@@ -66,9 +89,9 @@ def convert_frames_to_video(
     output_path = os.path.abspath(output_path)
 
     if not os.path.isfile(tar_file_path):
-        print(f"Could not find the input file {tar_file_path}")
+        logging.warning(f"Could not find the input file {tar_file_path}")
     if os.path.isfile(output_path) and not overwrite:
-        print(f"The output path {output_path} already exists. \
+        logging.warning(f"The output path {output_path} already exists. \
             To overwrite that file, you can pass `overwrite=true` to this function")
 
     # Open the tar file for reading
@@ -109,12 +132,12 @@ def convert_frames_to_video(
             try:
                 subprocess.run(ffmpeg_command, shell=True, check=True)
             except subprocess.CalledProcessError as e:
-                print("Error:", e)
+                logging.error("Error:", e)
 
     # Remove the directory and its contents
     shutil.rmtree(temp_dir)
 
-    print(f"Saved output as {output_path}")
+    logging.info(f"Saved output as {output_path}")
     return output_path
 
 
@@ -133,9 +156,9 @@ def convert_video_to_gif(
     output_path = os.path.abspath(output_path)
 
     if not os.path.isfile(video_file_path):
-        print("Could not find the input file $video_file_path")
+        logging.warning("Could not find the input file $video_file_path")
     if os.path.isfile(output_path) and not overwrite:
-        print("The output path $output_path already exists. \
+        logging.warning("The output path $output_path already exists. \
               To overwrite that file, you can pass `overwrite=true` to this function")
 
     # Create a temporary directory
@@ -164,12 +187,12 @@ def convert_video_to_gif(
         try:
             subprocess.run(ffmpeg_command, shell=True, check=True)
         except subprocess.CalledProcessError as e:
-            print("Error:", e)
+            logging.error("Error:", e)
 
     # Remove the directory and its contents
     shutil.rmtree(temp_dir)
 
-    print(f"Saved GIF as {output_path}")
+    logging.info(f"Saved GIF as {output_path}")
     return output_path
 
 
@@ -180,26 +203,26 @@ def compress_gif(
     ) -> str:
     
     if not os.path.isfile(file_path):
-        print("Could not find the input file $file_path")
+        logging.warning("Could not find the input file $file_path")
     
     if output_path is None:
         output_path = file_path[:-4] + "_lossy.gif"
     output_path = os.path.abspath(output_path)
 
     if os.path.isfile(output_path) and not overwrite:
-        print("The output path $output_path already exists. \
+        logging.warning("The output path $output_path already exists. \
               To overwrite that file, you can pass `overwrite=true` to this function")
 
     if overwrite:
         gifsicle_command = f"gifsicle -O3 -k128 --lossy=100 --verbose {file_path} -o {output_path}"
         # Execute the gifsicle command using subprocess
         try:
-            print("Executing the gifsicle command.")
+            logging.info("Executing the gifsicle command.")
             subprocess.run(gifsicle_command, shell=True, check=True)
         except subprocess.CalledProcessError as e:
-            print("Error:", e)
+            logging.error("Error:", e)
 
-    print(f"Saved lossy GIF as {output_path}")
+    logging.info(f"Saved lossy GIF as {output_path}")
     return output_path
 
 
