@@ -58,7 +58,7 @@ suppress_warnings = ["myst.header"]
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ["_static"]
+html_static_path = ["_static"]
 
 # Needed for interactive plotly in notebooks
 # html_js_files = [
@@ -82,7 +82,7 @@ myst_enable_extensions = [
 # -- Options for open graph -------------------------------------------------
 
 ogp_site_url = "https://simon-lc.github.io/framecat/"
-ogp_image = "https://simon-lc.github.io/framecat/docs/images/logo_dark.png"
+ogp_image = "https://raw.githubusercontent.com/simon-lc/framecat/refs/heads/docs/docs/images/logo-dark.png"
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -90,7 +90,7 @@ ogp_image = "https://simon-lc.github.io/framecat/docs/images/logo_dark.png"
 # a list of builtin themes.
 #
 html_theme = "furo"
-html_title = "nerfstudio"
+html_title = "framecat"
 
 autosectionlabel_prefix_document = True
 
@@ -103,8 +103,8 @@ html_theme_options = {
         "color-brand-primary": "#fdd06c",
         "color-brand-content": "##fea96a",
     },
-    "light_logo": "docs/images/logo_light.png",
-    "dark_logo": "docs/images/logo_dark.png",
+    "light_logo": "images/logo-light.svg",
+    "dark_logo": "images/logo-dark.svg",
 }
 
 # -- Code block theme --------------------------------------------------------

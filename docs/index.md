@@ -1,22 +1,18 @@
----
-myst:
----
-
 ```{eval-rst}
 :og:description: Framecat Documentation
-:og:image: https://assets.nerf.studio/opg.png
+:og:image: https://raw.githubusercontent.com/simon-lc/framecat/refs/heads/docs/docs/images/logo-dark.png
 ```
 
 <br/>
 
-```{image} images/logo_light.png
+```{image} _static/images/logo-light.svg
 :width: 400
 :align: center
 :alt: framecat
 :class: only-light
 ```
 
-```{image} images/logo_dark.png
+```{image} _static/images/logo-dark.svg
 :width: 400
 :align: center
 :alt: framecat
@@ -38,7 +34,6 @@ Nerfstudio initially launched as an opensource project by Berkeley students in [
 
 We are committed to providing learning resources to help you understand the basics of (if you're just getting started), and keep up-to-date with (if you're a seasoned veteran) all things NeRF. As researchers, we know just how hard it is to get onboarded with this next-gen technology. So we're here to help with tutorials, documentation, and more!
 
-Have feature requests? Want to add your brand-spankin'-new NeRF model? Have a new dataset? **We welcome [contributions](reference/contributing)!**
 Please do not hesitate to reach out to the nerfstudio team with any questions via [Discord](https://discord.gg/uMbNqcraFc).
 
 Have feedback? We'd love for you to fill out our [Nerfstudio Feedback Form](https://forms.gle/sqN5phJN7LfQVwnP9) if you want to let us know who you are, why you are interested in Nerfstudio, or provide any feedback!
