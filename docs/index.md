@@ -21,6 +21,7 @@
 
 Framecat provides simple tools to automate video and gif generation from frame sequences.
 
+Try it quickly by following this [**tutorial**](quickstart.md).
 
 ```{toctree}
 :hidden:
