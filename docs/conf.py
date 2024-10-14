@@ -108,8 +108,8 @@ html_theme_options = {
 
 # -- Code block theme --------------------------------------------------------
 
-pygments_style = "style.NerfstudioStyleLight"
-pygments_dark_style = "style.NerfstudioStyleDark"
+pygments_style = "style.FramecatStyleLight"
+pygments_dark_style = "style.FramecatStyleDark"
 
 # -- Napoleon settings -------------------------------------------------------
 
