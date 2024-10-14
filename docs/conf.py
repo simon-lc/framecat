@@ -80,8 +80,8 @@ myst_enable_extensions = [
 
 # -- Options for open graph -------------------------------------------------
 
-ogp_site_url = "http://docs.nerf.studio/"
-ogp_image = "https://assets.nerf.studio/opg.png"
+ogp_site_url = "https://simon-lc.github.io/framecat/"
+ogp_image = "https://simon-lc.github.io/framecat/docs/images/logo_dark.png"
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -102,8 +102,8 @@ html_theme_options = {
         "color-brand-primary": "#fdd06c",
         "color-brand-content": "##fea96a",
     },
-    "light_logo": "imgs/logo.png",
-    "dark_logo": "imgs/logo-dark.png",
+    "light_logo": "docs/images/logo_light.png",
+    "dark_logo": "docs/images/logo_dark.png",
 }
 
 # -- Code block theme --------------------------------------------------------
