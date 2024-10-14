@@ -11,18 +11,20 @@ from pathlib import Path
 
 # Set up logging configuration with colorlog
 handler = colorlog.StreamHandler()
-handler.setFormatter(colorlog.ColoredFormatter(
-    '%(log_color)s[%(levelname)s] - %(message)s',
-    datefmt=None,
-    reset=True,
-    log_colors={
-        'DEBUG': 'cyan',
-        'INFO': 'green',
-        'WARNING': 'light_yellow',
-        'ERROR': 'red',
-        'CRITICAL': 'bold_red',
-    }
-))
+handler.setFormatter(
+    colorlog.ColoredFormatter(
+        "%(log_color)s[%(levelname)s] - %(message)s",
+        datefmt=None,
+        reset=True,
+        log_colors={
+            "DEBUG": "cyan",
+            "INFO": "green",
+            "WARNING": "light_yellow",
+            "ERROR": "red",
+            "CRITICAL": "bold_red",
+        },
+    )
+)
 
 logger = colorlog.getLogger()
 logger.setLevel(logging.INFO)
@@ -36,10 +38,9 @@ class InputType:
 
 
 def rename_file(
-    file_path: str, 
-    new_file_name: str, 
-    ) -> str:
-
+    file_path: str,
+    new_file_name: str,
+) -> str:
     folder_path = os.path.dirname(file_path)
     new_file_path = os.path.join(folder_path, new_file_name)
 
@@ -50,12 +51,11 @@ def rename_file(
 
 
 def get_latest_files(
-    folder_path: str, 
-    num_files: int = 1, 
+    folder_path: str,
+    num_files: int = 1,
     extension: str = "tar",
-    ) -> list:
-
-    # Use glob to list all ".tar" files in the folder 
+) -> list:
+    # Use glob to list all ".tar" files in the folder
     # and sort them by modification time (most recent first)
     ext_files = glob.glob(os.path.join(folder_path, f"*.{extension}"))
     ext_files.sort(key=os.path.getmtime, reverse=True)
@@ -64,7 +64,9 @@ def get_latest_files(
     if ext_files:
         # Print the most recent ".tar" file
         if num_files > len(ext_files):
-            logging.warning(f"There are only {len(ext_files)} .{extension} files in {folder_path}.")
+            logging.warning(
+                f"There are only {len(ext_files)} .{extension} files in {folder_path}."
+            )
             num_files = len(ext_files)
         file_paths = ext_files[0:num_files]
         logging.info(f"Found {len(file_paths)} .{extension} files in {folder_path}")
@@ -75,14 +77,14 @@ def get_latest_files(
 
 
 def convert_frames_to_video(
-    tar_file_path: str, 
-    output_path: str = "output.mp4", 
-    framerate: int = 60, 
-    overwrite: bool = False, 
-    conversion_args: tuple = ()) -> str:
-
-    """You can pass arguments for the video conversion, for 
-    example, `conversion_args=("-pix_fmt", "yuv420p")` to create videos playable in 
+    tar_file_path: str,
+    output_path: str = "output.mp4",
+    framerate: int = 60,
+    overwrite: bool = False,
+    conversion_args: tuple = (),
+) -> str:
+    """You can pass arguments for the video conversion, for
+    example, `conversion_args=("-pix_fmt", "yuv420p")` to create videos playable in
     Windows.
     """
 
@@ -102,7 +104,7 @@ def convert_frames_to_video(
         # Extract all the contents to the specified directory
         tar.extractall(path=temp_dir)
         # get the file extension
-        images = glob.glob(os.path.join(temp_dir, '*'))
+        images = glob.glob(os.path.join(temp_dir, "*"))
         if images:
             # Get the first file in the list
             first_image = images[0]
@@ -111,13 +113,26 @@ def convert_frames_to_video(
             # Extract the image size
             width, height = Image.open(first_image).size
             # get the resizing dimensions if the original size were odd.
-            # odd sizes prevent the video and GIF conversions. 
-            width -= width%2 
-            height -= height%2 
+            # odd sizes prevent the video and GIF conversions.
+            width -= width % 2
+            height -= height % 2
 
-            cmd = ["ffmpeg", "-r", str(framerate), "-i", "%07d" + image_extension, 
-                "-vf", "scale=" + str(width) + ":" + str(height), "-vcodec", "libx264", 
-                "-preset", "slow", "-crf", "18", *conversion_args]
+            cmd = [
+                "ffmpeg",
+                "-r",
+                str(framerate),
+                "-i",
+                "%07d" + image_extension,
+                "-vf",
+                "scale=" + str(width) + ":" + str(height),
+                "-vcodec",
+                "libx264",
+                "-preset",
+                "slow",
+                "-crf",
+                "18",
+                *conversion_args,
+            ]
             if overwrite:
                 cmd.append("-y")
             cmd.append(output_path)
@@ -142,37 +157,47 @@ def convert_frames_to_video(
 
 
 def convert_video_to_gif(
-    video_file_path: str, 
+    video_file_path: str,
     output_path: str = "output.gif",
-    framerate: int = 30, 
-    start_time: float = 0.0, 
-    duration: float = 1e3, 
-    overwrite: bool = False, 
-    width: int = -1, 
-    height: int = -1, 
+    framerate: int = 30,
+    start_time: float = 0.0,
+    duration: float = 1e3,
+    overwrite: bool = False,
+    width: int = -1,
+    height: int = -1,
     hq_colors: bool = False,
-    ) -> str:
-    
+) -> str:
     output_path = os.path.abspath(output_path)
 
     if not os.path.isfile(video_file_path):
         logging.warning("Could not find the input file $video_file_path")
     if os.path.isfile(output_path) and not overwrite:
-        logging.warning("The output path $output_path already exists. \
-              To overwrite that file, you can pass `overwrite=true` to this function")
+        logging.warning(
+            "The output path $output_path already exists. \
+              To overwrite that file, you can pass `overwrite=true` to this function"
+        )
 
     # Create a temporary directory
     temp_dir = tempfile.mkdtemp()
 
     if overwrite:
         if hq_colors:
-            color_map = f"\"[0:v] fps={framerate}, scale={width}:{height}, \
-                split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1\""
+            color_map = f'"[0:v] fps={framerate}, scale={width}:{height}, \
+                split [a][b];[a] palettegen=stats_mode=single [p];[b][p] paletteuse=new=1"'
         else:
-            color_map = f"\"[0:v] fps={framerate}, scale={width}:{height}, \
-                split [a][b];[a] palettegen [p];[b][p] paletteuse\""
-        cmd = ["ffmpeg", "-ss", str(start_time), "-t", str(duration), "-i", 
-                video_file_path, "-filter_complex", color_map]
+            color_map = f'"[0:v] fps={framerate}, scale={width}:{height}, \
+                split [a][b];[a] palettegen [p];[b][p] paletteuse"'
+        cmd = [
+            "ffmpeg",
+            "-ss",
+            str(start_time),
+            "-t",
+            str(duration),
+            "-i",
+            video_file_path,
+            "-filter_complex",
+            color_map,
+        ]
         if overwrite:
             cmd.append("-y")
         cmd.append(output_path)
@@ -197,24 +222,27 @@ def convert_video_to_gif(
 
 
 def compress_gif(
-    file_path: str, 
+    file_path: str,
     output_path: str | None = None,
-    overwrite: bool = False, 
-    ) -> str:
-    
+    overwrite: bool = False,
+) -> str:
     if not os.path.isfile(file_path):
         logging.warning("Could not find the input file $file_path")
-    
+
     if output_path is None:
         output_path = file_path[:-4] + "_lossy.gif"
     output_path = os.path.abspath(output_path)
 
     if os.path.isfile(output_path) and not overwrite:
-        logging.warning("The output path $output_path already exists. \
-              To overwrite that file, you can pass `overwrite=true` to this function")
+        logging.warning(
+            "The output path $output_path already exists. \
+              To overwrite that file, you can pass `overwrite=true` to this function"
+        )
 
     if overwrite:
-        gifsicle_command = f"gifsicle -O3 -k128 --lossy=100 --verbose {file_path} -o {output_path}"
+        gifsicle_command = (
+            f"gifsicle -O3 -k128 --lossy=100 --verbose {file_path} -o {output_path}"
+        )
         # Execute the gifsicle command using subprocess
         try:
             logging.info("Executing the gifsicle command.")
@@ -231,14 +259,14 @@ class RenderingParameters:
         self,
         overwrite: bool = True,
         rename_input_file: bool = True,
-        gif_framerate: int = 30, 
-        start_time: float = 0.0, 
-        duration: float = 1e3, 
-        width: int = -1, 
-        height: int = -1, 
+        gif_framerate: int = 30,
+        start_time: float = 0.0,
+        duration: float = 1e3,
+        width: int = -1,
+        height: int = -1,
         hq_colors: bool = False,
         generate_lossy: bool = False,
-        video_framerate: int = 60, 
+        video_framerate: int = 60,
         video_conversion_args: tuple = (),
     ) -> None:
         self.overwrite = overwrite
@@ -265,12 +293,11 @@ def get_input_type(file_path: str) -> InputType:
 
 
 def render_file(
-    file_path: str, 
+    file_path: str,
     output_name: str,
     output_folder: str | None = None,
     params: RenderingParameters = RenderingParameters(),
-    ) -> None:
-        
+) -> None:
     if output_folder is None:
         # Get the user's home directory
         home_directory = os.path.expanduser("~")
@@ -289,37 +316,37 @@ def render_file(
 
         if params.rename_input_file:
             tar_file_path = rename_file(
-                tar_file_path, 
-                output_name + ".tar", 
-                )
+                tar_file_path,
+                output_name + ".tar",
+            )
 
         convert_frames_to_video(
-            tar_file_path, 
-            output_path = video_output_file_path, 
-            framerate = params.video_framerate, 
-            overwrite = params.overwrite, 
-            conversion_args = params.video_conversion_args,
-            )
+            tar_file_path,
+            output_path=video_output_file_path,
+            framerate=params.video_framerate,
+            overwrite=params.overwrite,
+            conversion_args=params.video_conversion_args,
+        )
         video_input_file_path = video_output_file_path
-    
+
     # Video to GIF
     if input_type in [InputType.TAR, InputType.MP4]:
         if input_type == InputType.MP4:
             video_input_file_path = file_path
         gif_output_file_path = os.path.join(output_folder, output_name + ".gif")
-        
+
         convert_video_to_gif(
-            video_input_file_path, 
-            output_path = gif_output_file_path,
-            framerate = params.gif_framerate, 
-            start_time = params.start_time, 
-            duration = params.duration, 
-            overwrite = params.overwrite, 
-            width = params.width, 
-            height = params.height, 
-            hq_colors = params.hq_colors,
-            )
-    
+            video_input_file_path,
+            output_path=gif_output_file_path,
+            framerate=params.gif_framerate,
+            start_time=params.start_time,
+            duration=params.duration,
+            overwrite=params.overwrite,
+            width=params.width,
+            height=params.height,
+            hq_colors=params.hq_colors,
+        )
+
         gif_input_file_path = gif_output_file_path
 
     # GIF to small memory footprint GIF
@@ -327,7 +354,7 @@ def render_file(
         if input_type == InputType.GIF:
             gif_input_file_path = file_path
         compress_gif(
-            gif_input_file_path, 
-            output_path = None,
-            overwrite = params.overwrite, 
-            )
+            gif_input_file_path,
+            output_path=None,
+            overwrite=params.overwrite,
+        )
