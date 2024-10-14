@@ -2,6 +2,7 @@
 [![build](https://github.com/simon-lc/framecat/actions/workflows/build.yml/badge.svg)](https://github.com/simon-lc/framecat/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/simon-lc/framecat/graph/badge.svg?token=CUWTT7EK5E)](https://codecov.io/gh/simon-lc/framecat)
 [![Docs](https://github.com/simon-lc/framecat/actions/workflows/docs.yml/badge.svg)](https://github.com/simon-lc/framecat/actions/workflows/docs.yml)
+[![Static Badge]([https://img.shields.io/badge/just%20the%20message-8A2BE2](https://img.shields.io/badge/any_text-you_like-blue))](https://simon-lc.github.io/framecat)
 
 **Generate videos and GIF and low-memory footprint GIF from frame sequences, video and GIF sources.**
 
