@@ -74,6 +74,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/jupyter_execute/
 
 # PyBuilder
 .pybuilder/
@@ -131,6 +132,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.docs_venv
 
 # Spyder project settings
 .spyderproject
