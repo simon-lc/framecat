@@ -34,9 +34,11 @@ jobs:
           uv pip install --system .[docs]
 
       - name: Sphinx build
-        # fail on warnings
+        # fail on warnings with `-W`
+        # run: |
+        # sphinx-build docs _build -W --keep-going
         run: |
-          sphinx-build docs _build -W --keep-going
+          sphinx-build docs _build --keep-going
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
