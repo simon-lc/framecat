@@ -1,9 +1,9 @@
-```{eval-rst}
+<!-- ```{eval-rst}
 :og:description: Framecat Documentation
 :og:image: https://raw.githubusercontent.com/simon-lc/framecat/refs/heads/docs/docs/images/logo-dark.png
-```
+``` -->
 
-<br/>
+<!-- <br/> -->
 
 ```{image} _static/images/logo-light.svg
 :width: 400
