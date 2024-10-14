@@ -1,35 +1,15 @@
-<!-- ```{eval-rst}
-:og:description: Framecat Documentation
-:og:image: https://assets.nerf.studio/opg.png
-```
+Open Data Services Sphinx Base
+==============================
 
-<br/>
+The base Sphinx setup (myst-parser + internationalisation + Open Data Services maintained extensions) for Open Data Services docs projects.
 
-```{image} images/logo_light.png
-:width: 400
-:align: center
-:alt: framecat
-:class: only-light
-```
 
-```{image} images/logo_dark.png
-:width: 400
-:align: center
-:alt: framecat
-:class: only-dark
-```
+```{eval-rst}
 
-<br/>
+.. toctree::
+   :hidden:
+   :caption: Table of Contents
 
-<br/> -->
+   api
 
-Automate video and gif generation from frame sequences.
-
-## Contents
-
-```{toctree}
-:hidden:
-:caption: API
-
-api
 ```
