@@ -11,11 +11,31 @@ from framecat.rendering import (
 
 
 class InputMode:
+    """
+    Class to represent the different modes for input selection.
+
+    Attributes:
+        LATEST (str): Represents the mode to select the latest input.
+        BY_NAME (str): Represents the mode to select input by name.
+    """
+
     LATEST = "latest"
     BY_NAME = "by-name"
 
 
 def parse_args(args):
+    """
+    Parses command-line arguments for video and GIF generation.
+
+    This function sets up the argument parser with various options for input modes,
+    input types, file paths, and parameters for GIF and video generation.
+
+    Args:
+        args (list): A list of command-line arguments to parse.
+
+    Returns:
+        Namespace: A Namespace object containing the parsed arguments.
+    """
     home_directory = os.path.expanduser("~")
     default_input_folder = os.path.join(home_directory, "Downloads")
     default_output_folder = os.path.join(home_directory, "Videos", "framecat")
@@ -128,10 +148,17 @@ def parse_args(args):
     return parser.parse_args(args)
 
 
-# %%
-
-
 def execute_command(args):
+    """
+    Executes the rendering process based on the parsed command-line arguments.
+
+    This function configures the rendering parameters and determines the input files
+    to process based on the specified input mode (latest or by name). It then calls
+    the `render_file` function for each input file.
+
+    Args:
+        args (Namespace): A Namespace object containing the parsed command-line arguments.
+    """
     params = RenderingParameters(
         overwrite=not args.dont_overwrite,
         rename_input_file=not args.dont_rename_input_file,
