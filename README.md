@@ -1,6 +1,7 @@
 ## FrameCat
 [![build](https://github.com/simon-lc/framecat/actions/workflows/build.yml/badge.svg)](https://github.com/simon-lc/framecat/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/simon-lc/framecat/graph/badge.svg?token=CUWTT7EK5E)](https://codecov.io/gh/simon-lc/framecat)
+[![Docs](https://github.com/simon-lc/framecat/actions/workflows/docs.yml/badge.svg)](https://github.com/simon-lc/framecat/actions/workflows/docs.yml)
 
 **Generate videos and GIF and low-memory footprint GIF from frame sequences, video and GIF sources.**
 
