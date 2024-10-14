@@ -4,9 +4,6 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-# Configuration file adapted from Nerfstudio:
-# https://github.com/nerfstudio-project/nerfstudio
-
 # -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -21,9 +18,9 @@ sys.path.append(os.path.abspath("./_pygments"))
 
 # -- Project information -----------------------------------------------------
 
-project = "framecat"
-copyright = "2024, Simon Le Cleac'h"
-author = "Simon Le Cleac'h"
+project = "nerfstudio"
+copyright = "2022, nerfstudio Team"
+author = "nerfstudio Team"
 
 # -- General configuration ---------------------------------------------------
 
@@ -61,10 +58,10 @@ templates_path = ["_templates"]
 html_static_path = ["_static"]
 
 # Needed for interactive plotly in notebooks
-# html_js_files = [
-#     "require.min.js",
-#     "custom.js",
-# ]
+html_js_files = [
+    "require.min.js",
+    "custom.js",
+]
 
 # -- MYST configs -----------------------------------------------------------
 
@@ -81,8 +78,8 @@ myst_enable_extensions = [
 
 # -- Options for open graph -------------------------------------------------
 
-ogp_site_url = "https://simon-lc.github.io/framecat/"
-ogp_image = "https://raw.githubusercontent.com/simon-lc/framecat/refs/heads/docs/docs/images/logo-dark.png"
+ogp_site_url = "http://docs.nerf.studio/"
+ogp_image = "https://assets.nerf.studio/opg.png"
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -90,7 +87,7 @@ ogp_image = "https://raw.githubusercontent.com/simon-lc/framecat/refs/heads/docs
 # a list of builtin themes.
 #
 html_theme = "furo"
-html_title = "framecat"
+html_title = "nerfstudio"
 
 autosectionlabel_prefix_document = True
 
@@ -103,14 +100,14 @@ html_theme_options = {
         "color-brand-primary": "#fdd06c",
         "color-brand-content": "##fea96a",
     },
-    "light_logo": "images/logo-light.svg",
-    "dark_logo": "images/logo-dark.svg",
+    "light_logo": "imgs/logo.png",
+    "dark_logo": "imgs/logo-dark.png",
 }
 
 # -- Code block theme --------------------------------------------------------
 
-pygments_style = "style.FramecatStyleLight"
-pygments_dark_style = "style.FramecatStyleDark"
+pygments_style = "style.NerfstudioStyleLight"
+pygments_dark_style = "style.NerfstudioStyleDark"
 
 # -- Napoleon settings -------------------------------------------------------
 
