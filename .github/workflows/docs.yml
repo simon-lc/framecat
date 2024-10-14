@@ -40,6 +40,14 @@ jobs:
         run: |
           sphinx-build docs _build --keep-going
 
+      - name: Install tree
+        run: sudo apt-get install tree
+
+      - name: Print tree
+        run: |
+          cd _build
+          tree -a
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
