@@ -1,26 +1,25 @@
 ---
 myst:
-  substitutions:
 ---
 
 ```{eval-rst}
-:og:description: Nerfstudio Documentation
+:og:description: Framecat Documentation
 :og:image: https://assets.nerf.studio/opg.png
 ```
 
 <br/>
 
-```{image} _static/imgs/logo.png
+```{image} images/logo_light.png
 :width: 400
 :align: center
-:alt: nerfstudio
+:alt: framecat
 :class: only-light
 ```
 
-```{image} _static/imgs/logo-dark.png
+```{image} images/logo_dark.png
 :width: 400
 :align: center
-:alt: nerfstudio
+:alt: framecat
 :class: only-dark
 ```
 
