@@ -72,6 +72,3 @@ framecat latest --input-type mp4 --output-names out_name1`
 ```
 framecat latest --input-type gif --output-names out_name1`
 ```
-
-
-@@include[README.md](docs/README.md)

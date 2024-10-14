@@ -26,7 +26,7 @@ Framecat provides simple tools to automate video and gif generation from frame s
 :hidden:
 :caption: Quickstart
 
-README
+quickstart
 ```
 
 ```{toctree}
