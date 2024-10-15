@@ -128,6 +128,7 @@ napoleon_preprocess_types = False
 napoleon_type_aliases = None
 napoleon_attr_annotations = True
 
+
 # -- MYSTNB -----------------------------------------------------------------
 
 suppress_warnings = ["mystnb.unknown_mime_type", "myst.header"]
