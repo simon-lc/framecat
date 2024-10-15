@@ -122,13 +122,6 @@ To get started, we recommend browsing the examples to the left.
    tab_completion
 
 
-.. toctree::
-   :caption: API Reference
-   :hidden:
-   :maxdepth: 5
-   :titlesonly:
-
-   api/tyro/index
 
 
 
