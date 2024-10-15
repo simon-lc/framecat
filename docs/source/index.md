@@ -125,6 +125,8 @@ To get started, we recommend browsing the examples to the left.
 
 
 
+
+
 .. |build| image:: https://github.com/brentyi/tyro/actions/workflows/build.yml/badge.svg
    :alt: Build status icon
    :target: https://github.com/brentyi/tyro
