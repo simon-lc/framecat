@@ -52,12 +52,12 @@ extensions = [
     "autoapi.extension",
     "sphinx.ext.viewcode",
     "m2r2",
-    # "sphinxcontrib.programoutput",
-    # "sphinxcontrib.ansi",
+    "sphinxcontrib.programoutput",
+    "sphinxcontrib.ansi",
     "sphinxcontrib.googleanalytics",
 ]
-# programoutput_use_ansi = True
-# html_ansi_stylesheet = "black-on-white.css"
+programoutput_use_ansi = True
+html_ansi_stylesheet = "black-on-white.css"
 html_static_path = ["_static"]
 html_theme_options = {
     "light_css_variables": {
