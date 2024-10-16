@@ -18,7 +18,7 @@
 
 :code:`framecat` provides simple tools to automate video and gif generation from frame sequences via a command-line interface.
 
-Try it quickly by following this [**tutorial**](create a link to quickstart page).
+Try it quickly by following this [**tutorial**](quickstart).
 
 
 <!-- prettier-ignore-start -->
