@@ -12,6 +12,11 @@ authors = [
 ]
 
 requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
 
 dependencies = [
     "colorlog>=6.8.2",
