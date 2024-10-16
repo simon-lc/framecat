@@ -38,8 +38,8 @@ Try it quickly by following this [**tutorial**](create a link to quickstart page
    :titlesonly:
    :glob:
 
-   reference/cli_interface
-   reference/rendering
+   api_reference/cli_interface
+   api_reference/rendering
 
 
 .. toctree::
@@ -49,71 +49,6 @@ Try it quickly by following this [**tutorial**](create a link to quickstart page
    :titlesonly:
 
    docs
-
-
-
-.. toctree::
-   :caption: Getting started old
-   :hidden:
-   :maxdepth: 1
-   :titlesonly:
-
-   installation
-   your_first_cli
-
-.. toctree::
-   :caption: Basics
-   :hidden:
-   :maxdepth: 1
-   :titlesonly:
-   :glob:
-
-   examples/01_basics/*
-
-
-.. toctree::
-   :caption: Hierarchies
-   :hidden:
-   :maxdepth: 1
-   :titlesonly:
-   :glob:
-
-   examples/02_nesting/*
-
-
-.. toctree::
-   :caption: Config Management
-   :hidden:
-   :maxdepth: 1
-   :titlesonly:
-   :glob:
-
-   examples/03_config_systems/*
-
-
-.. toctree::
-   :caption: Additional Features
-   :hidden:
-   :maxdepth: 1
-   :titlesonly:
-   :glob:
-
-   examples/04_additional/*
-
-
-.. toctree::
-   :caption: Notes
-   :hidden:
-   :maxdepth: 5
-   :glob:
-
-   goals_and_alternatives
-   helptext_generation
-   tab_completion
-
-
-
-
 
 
 .. |build| image:: https://github.com/simon-lc/framecat/actions/workflows/build.yml/badge.svg
