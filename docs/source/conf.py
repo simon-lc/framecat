@@ -6,6 +6,9 @@
 # full list see the documentation:
 # http://www.sphinx-doc.org/en/stable/config
 
+# File adapted from the Tyro package
+# https://github.com/brentyi/tyro
+
 from typing import Dict, List
 
 import m2r2
