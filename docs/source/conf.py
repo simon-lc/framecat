@@ -76,8 +76,8 @@ html_theme_options = {
             "class": "",
         },
     ],
-    "light_logo": "logo-light.svg",
-    "dark_logo": "logo-dark.svg",
+    "light_logo": "images/logo-light.svg",
+    "dark_logo": "images/logo-dark.svg",
 }
 
 # Pull documentation types from hints
@@ -180,7 +180,7 @@ latex_documents = [
         master_doc,
         "framecat.tex",
         "framecat",
-        "brentyi",
+        "simon-lc",
         "manual",
     ),
 ]
