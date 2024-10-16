@@ -184,6 +184,9 @@
 <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Building documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#documentation-related-packages">Documentation related packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#git-https-github-com-brentyi-ansi-git">“git+https://github.com/brentyi/ansi.git”,</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#git-https-github-com-brentyi-sphinxcontrib-programoutput-git">“git+https://github.com/brentyi/sphinxcontrib-programoutput.git”,</a></li>
 </ul>
 
 </div>
@@ -238,26 +241,59 @@
 </div>
 <p>Install documentation dependencies</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">uv</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span><span class="p">[</span><span class="n">docs</span><span class="p">]</span>
+<span class="n">uv</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">system</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;.[dev]&quot;</span>
+<span class="n">uv</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">system</span> <span class="o">-</span><span class="n">r</span> <span class="n">docs</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>Build the documentation</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="n">docs</span> <span class="n">docs</span><span class="o">/</span><span class="n">_build</span>  <span class="o">--</span><span class="n">keep</span><span class="o">-</span><span class="n">going</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="n">docs</span><span class="o">/</span><span class="n">source</span> <span class="n">docs</span><span class="o">/</span><span class="n">build</span> <span class="o">-</span><span class="n">b</span> <span class="n">dirhtml</span>
 </pre></div>
 </div>
 <p>To fail when there is a warning, you can add the <code class="docutils literal notranslate"><span class="pre">-W</span></code> flag</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="n">docs</span> <span class="n">docs</span><span class="o">/</span><span class="n">_build</span> <span class="o">-</span><span class="n">W</span> <span class="o">--</span><span class="n">keep</span><span class="o">-</span><span class="n">going</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="n">docs</span><span class="o">/</span><span class="n">source</span> <span class="n">docs</span><span class="o">/</span><span class="n">build</span> <span class="o">-</span><span class="n">W</span> <span class="o">-</span><span class="n">b</span> <span class="n">dirhtml</span>
 </pre></div>
 </div>
 <p>Serve the documentation locally</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span> <span class="o">--</span><span class="n">directory</span> <span class="n">docs</span><span class="o">/</span><span class="n">_build</span> <span class="mi">8000</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span> <span class="o">--</span><span class="n">directory</span> <span class="n">docs</span><span class="o">/</span><span class="n">build</span> <span class="mi">8000</span>
 </pre></div>
 </div>
 <p>Clean up built documentation</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">docs</span><span class="o">/</span><span class="n">_build</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">docs</span><span class="o">/</span><span class="n">build</span>
 </pre></div>
 </div>
 </section>
+</section>
+<section id="documentation-related-packages">
+<h1>Documentation related packages<a class="headerlink" href="#documentation-related-packages" title="Link to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;pytest&gt;=7.1.2&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pytest-cov&gt;=3.0.0&quot;</span><span class="p">,</span>
+<span class="s2">&quot;torch&gt;=1.10.0&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pyright&gt;=1.1.349,!=1.1.379&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ruff&gt;=0.1.13&quot;</span><span class="p">,</span>
+<span class="s2">&quot;mypy&gt;=1.4.1&quot;</span><span class="p">,</span>
+<span class="c1"># As of 7/27/2023, flax install fails for Python 3.7 without pinning to an</span>
+<span class="c1"># old version. But doing so breaks other Python versions.</span>
+<span class="s2">&quot;flax&gt;=0.6.9;python_version&gt;=&#39;3.8&#39;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pydantic&gt;=2.5.2&quot;</span><span class="p">,</span>
+<span class="s2">&quot;coverage[toml]&gt;=6.5.0&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>dev = [</dt><dd><p>“PyYAML&gt;=6.0”,
+“frozendict&gt;=2.3.4”,
+“omegaconf&gt;=2.2.2”,
+“attrs&gt;=21.4.0”,
+“numpy&gt;=1.20.0”,
+“eval_type_backport&gt;=0.1.3”,</p>
+</dd>
+</dl>
+<p>]</p>
+</section>
+<section id="git-https-github-com-brentyi-ansi-git">
+<h1>“git+https://github.com/brentyi/ansi.git”,<a class="headerlink" href="#git-https-github-com-brentyi-ansi-git" title="Link to this heading">#</a></h1>
+</section>
+<section id="git-https-github-com-brentyi-sphinxcontrib-programoutput-git">
+<h1>“git+https://github.com/brentyi/sphinxcontrib-programoutput.git”,<a class="headerlink" href="#git-https-github-com-brentyi-sphinxcontrib-programoutput-git" title="Link to this heading">#</a></h1>
 </section>
 
         </article>
@@ -319,6 +355,9 @@
 <li><a class="reference internal" href="#building-locally">Building locally</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#documentation-related-packages">Documentation related packages</a></li>
+<li><a class="reference internal" href="#git-https-github-com-brentyi-ansi-git">“git+https://github.com/brentyi/ansi.git”,</a></li>
+<li><a class="reference internal" href="#git-https-github-com-brentyi-sphinxcontrib-programoutput-git">“git+https://github.com/brentyi/sphinxcontrib-programoutput.git”,</a></li>
 </ul>
 
           </div>
