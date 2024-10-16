@@ -11,6 +11,13 @@ authors = [
     {name = "Simon le Cleac'h", email = "simonlch.edu@gmail.com"},
 ]
 
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
 dependencies = [
     "colorlog>=6.8.2",
     "pytest>=7.4.2",
@@ -18,7 +25,7 @@ dependencies = [
     "pillow>=9.0.0",
 ]
 
-requires-python = ">=3.9"
+[project.optional-dependencies]
 
 [tool.coverage.run]
 source = ["./src/framecat"]
