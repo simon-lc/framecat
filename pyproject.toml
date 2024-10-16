@@ -27,12 +27,6 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "PyYAML>=6.0",
-    "frozendict>=2.3.4",
-    "omegaconf>=2.2.2",
-    "attrs>=21.4.0",
-    "numpy>=1.20.0",
-    "eval_type_backport>=0.1.3",
 ]
 
 
