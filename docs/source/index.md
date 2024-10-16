@@ -4,6 +4,13 @@
 
 :code:`framecat` provides simple tools to automate video and gif generation from frame sequences via a command-line interface.
 
+
+Framecat provides simple tools to automate video and gif generation from frame sequences.
+
+Try it quickly by following this [**tutorial**](quickstart.md).
+
+
+
 Our core API, :func:`tyro.cli()`,
 
 - **Generates CLI interfaces** from a comprehensive set of Python type
@@ -63,6 +70,14 @@ To get started, we recommend browsing the examples to the left.
 
 .. toctree::
    :caption: Getting started
+   :hidden:
+   :maxdepth: 1
+   :titlesonly:
+
+   quickstart
+
+.. toctree::
+   :caption: Getting started old
    :hidden:
    :maxdepth: 1
    :titlesonly:
