@@ -1,6 +1,6 @@
 # Building documentation
 
-## Github pages deplyoment setting
+## Github pages deployment setting
 Use the following settings for the Github pages deployment:
 
 ![framecat logo](_static/images/gh-pages-settings.png)
