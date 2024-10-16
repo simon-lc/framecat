@@ -1,12 +1,12 @@
+
+
+# framecat
 .. image:: _static/images/logo-dark.svg
    :width: 400
    :align: center
    :alt: framecat
    :class: only-dark
 
-
-
-# framecat
 
 |build| |nbsp| |docs| |nbsp| |coverage|
 
@@ -32,7 +32,8 @@ Try it quickly by following this [**tutorial**](create a link to quickstart page
    :titlesonly:
    :glob:
 
-   reference/api/index
+   reference/api/cli_interface
+   reference/api/rendering
 
 
 .. toctree::
