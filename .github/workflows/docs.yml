@@ -23,10 +23,10 @@ jobs:
           python-version: "3.10"
 
       # Build documentation
+      # uv pip install --system -e ".[dev]"
       - name: Building documentation
         run: |
           pip install uv
-          uv pip install --system -e ".[dev]"
           uv pip install --system -r docs/requirements.txt
           sphinx-build docs/source docs/build -b dirhtml
 
