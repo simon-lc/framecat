@@ -1,3 +1,18 @@
+
+```{image} _static/images/logo-light.svg
+:width: 400
+:align: center
+:alt: framecat
+:class: only-light
+```
+
+```{image} _static/images/logo-dark.svg
+:width: 400
+:align: center
+:alt: framecat
+:class: only-dark
+```
+
 # framecat
 
 |build| |nbsp| |docs| |nbsp| |coverage|
