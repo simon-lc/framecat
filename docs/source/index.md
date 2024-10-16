@@ -32,7 +32,8 @@ Try it quickly by following this [**tutorial**](create a link to quickstart page
    :titlesonly:
    :glob:
 
-   reference/api/index
+   reference/api/cli_interface
+   reference/api/rendering
 
 
 .. toctree::
