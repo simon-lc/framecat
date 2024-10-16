@@ -1,6 +1,9 @@
-# Building documentation locally
+# Building documentation
+
+## Github pages deplyoment setting
 
 
+## Building locally
 Go to package root
 ```
 cd ~/framecat
