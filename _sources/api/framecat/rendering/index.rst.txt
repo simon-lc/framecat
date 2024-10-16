@@ -1,0 +1,261 @@
+:py:mod:`framecat.rendering`
+============================
+
+.. py:module:: framecat.rendering
+
+
+Module Contents
+---------------
+
+.. py:data:: handler
+
+   
+
+.. py:data:: logger
+
+   
+
+.. py:class:: InputType
+
+
+   
+   Class to represent the different input file types supported.
+
+   .. attribute:: TAR
+
+      Represents a TAR file type.
+
+      :type: str
+
+   .. attribute:: MP4
+
+      Represents an MP4 file type.
+
+      :type: str
+
+   .. attribute:: GIF
+      Represents a GIF file type.
+
+      :type: str
+   .. py:attribute:: TAR
+      :value: 'tar'
+
+      
+
+   .. py:attribute:: MP4
+      :value: 'mp4'
+
+      
+
+   .. py:attribute:: GIF
+      :value: 'gif'
+
+      
+
+
+.. py:function:: rename_file(file_path: str, new_file_name: str) -> str
+
+   
+   Renames a file to a new specified name.
+
+   :param file_path: Path to the file to be renamed.
+   :type file_path: str
+   :param new_file_name: New name for the file (including extension).
+   :type new_file_name: str
+
+   :returns: *str* -- The path to the renamed file.
+
+.. py:function:: get_latest_files(folder_path: str, num_files: int = 1, extension: str = 'tar') -> list
+
+   
+   Retrieves the latest modified files with a specified extension from a given folder.
+
+   :param folder_path: Path to the folder to search for files.
+   :type folder_path: str
+   :param num_files: Number of most recent files to return.
+                     Defaults to 1.
+   :type num_files: int, optional
+   :param extension: File extension to filter by.
+                     Defaults to "tar".
+   :type extension: str, optional
+
+   :returns: *list* -- A list of paths to the latest modified files with the specified extension.
+
+   :raises ValueError: If the provided folder path does not exist.
+
+.. py:function:: convert_frames_to_video(tar_file_path: str, output_path: str = 'output.mp4', framerate: int = 60, overwrite: bool = False, conversion_args: tuple = ()) -> str
+
+   
+   Converts frames extracted from a TAR file into a video.
+
+   You can pass arguments for the video conversion, for example,
+   ``conversion_args=("-pix_fmt", "yuv420p")`` to create videos playable in Windows.
+
+   :param tar_file_path: Path to the input TAR file containing frames.
+   :type tar_file_path: str
+   :param output_path: Path to save the output video.
+                       Defaults to "output.mp4".
+   :type output_path: str, optional
+   :param framerate: Frame rate for the output video. Defaults to 60.
+   :type framerate: int, optional
+   :param overwrite: Whether to overwrite the output file if it exists.
+                     Defaults to False.
+   :type overwrite: bool, optional
+   :param conversion_args: Additional arguments for video conversion.
+                           Defaults to an empty tuple.
+   :type conversion_args: tuple, optional
+
+   :returns: *str* -- The path to the saved video.
+
+   :raises FileNotFoundError: If the input TAR file does not exist.
+   :raises subprocess.CalledProcessError: If the FFMPEG command fails.
+
+.. py:function:: convert_video_to_gif(video_file_path: str, output_path: str = 'output.gif', framerate: int = 30, start_time: float = 0.0, duration: float = 1000.0, overwrite: bool = False, width: int = -1, height: int = -1, hq_colors: bool = False) -> str
+
+   
+   Converts a video file to a GIF.
+
+   :param video_file_path: Path to the input video file.
+   :type video_file_path: str
+   :param output_path: Path to save the output GIF.
+                       Defaults to "output.gif".
+   :type output_path: str, optional
+   :param framerate: Frame rate for the GIF. Defaults to 30.
+   :type framerate: int, optional
+   :param start_time: Start time for the conversion in seconds. Defaults to 0.0.
+   :type start_time: float, optional
+   :param duration: Duration of the output GIF in seconds. Defaults to 1000.0.
+   :type duration: float, optional
+   :param overwrite: Whether to overwrite the output file if it exists.
+                     Defaults to False.
+   :type overwrite: bool, optional
+   :param width: Width of the output GIF. Defaults to -1 (no resizing).
+   :type width: int, optional
+   :param height: Height of the output GIF. Defaults to -1 (no resizing).
+   :type height: int, optional
+   :param hq_colors: Whether to use high-quality colors for the GIF. Defaults to False.
+   :type hq_colors: bool, optional
+
+   :returns: *str* -- The path to the saved GIF.
+
+   :raises FileNotFoundError: If the input video file does not exist.
+   :raises subprocess.CalledProcessError: If the FFMPEG command fails.
+
+.. py:function:: compress_gif(file_path: str, output_path: str | None = None, overwrite: bool = False) -> str
+
+   
+   Compresses a GIF file to reduce its size with lossy optimization.
+
+   :param file_path: Path to the input GIF file.
+   :type file_path: str
+   :param output_path: Path to save the compressed GIF.
+                       If None, defaults to ``<input_file>_lossy.gif``.
+   :type output_path: str, optional
+   :param overwrite: Whether to overwrite the output file if it exists.
+                     Defaults to False.
+   :type overwrite: bool, optional
+
+   :returns: *str* -- The path to the saved compressed GIF.
+
+   :raises FileNotFoundError: If the input file does not exist.
+
+.. py:class:: RenderingParameters(overwrite: bool = True, rename_input_file: bool = True, gif_framerate: int = 30, start_time: float = 0.0, duration: float = 1000.0, width: int = -1, height: int = -1, hq_colors: bool = False, generate_lossy: bool = False, video_framerate: int = 60, video_conversion_args: tuple = ())
+
+
+   
+   Class to hold parameters for rendering operations.
+
+   .. attribute:: overwrite
+
+      Whether to overwrite existing files. Defaults to True.
+
+      :type: bool
+
+   .. attribute:: rename_input_file
+
+      Whether to rename the input file. Defaults to True.
+
+      :type: bool
+
+   .. attribute:: gif_framerate
+
+      Frame rate for the GIF output. Defaults to 30.
+
+      :type: int
+
+   .. attribute:: start_time
+
+      Start time for video conversion in seconds. Defaults to 0.0.
+
+      :type: float
+
+   .. attribute:: duration
+
+      Duration for video conversion in milliseconds. Defaults to 1000.0.
+
+      :type: float
+
+   .. attribute:: width
+
+      Width of the output GIF. Defaults to -1 (no resizing).
+
+      :type: int
+
+   .. attribute:: height
+
+      Height of the output GIF. Defaults to -1 (no resizing).
+
+      :type: int
+
+   .. attribute:: hq_colors
+
+      Whether to use high-quality colors for GIF. Defaults to False.
+
+      :type: bool
+
+   .. attribute:: generate_lossy
+
+      Whether to generate a lossy GIF. Defaults to False.
+
+      :type: bool
+
+   .. attribute:: video_framerate
+
+      Frame rate for the video output. Defaults to 60.
+
+      :type: int
+
+   .. attribute:: video_conversion_args
+      Additional arguments for video conversion. Defaults to an empty tuple.
+
+      :type: tuple
+
+.. py:function:: get_input_type(file_path: str) -> InputType
+
+   
+   Determines the input type based on the file extension.
+
+   :param file_path: Path to the input file.
+   :type file_path: str
+
+   :returns: *InputType* -- The identified input type (TAR, MP4, or GIF).
+
+   :raises ValueError: If the file extension is not recognized.
+
+.. py:function:: render_file(file_path: str, output_name: str, output_folder: str | None = None, params: RenderingParameters = RenderingParameters()) -> None
+
+   
+   Renders a video or GIF from the specified file.
+
+   :param file_path: Path to the input file (TAR or MP4).
+   :type file_path: str
+   :param output_name: Name for the output files (without extension).
+   :type output_name: str
+   :param output_folder: Directory for saving output files.
+                         Defaults to ~/Videos/framecat.
+   :type output_folder: str, optional
+   :param params: Parameters for rendering options.
+   :type params: RenderingParameters, optional
+
+   :returns: *None* -- This function does not return a value.
+

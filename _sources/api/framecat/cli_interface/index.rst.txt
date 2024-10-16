@@ -1,0 +1,61 @@
+:py:mod:`framecat.cli_interface`
+================================
+
+.. py:module:: framecat.cli_interface
+
+
+Module Contents
+---------------
+
+.. py:class:: InputMode
+
+
+   
+   Class to represent the different modes for input selection.
+
+   .. attribute:: LATEST
+
+      Represents the mode to select the latest input.
+
+      :type: str
+
+   .. attribute:: BY_NAME
+      Represents the mode to select input by name.
+
+      :type: str
+   .. py:attribute:: LATEST
+      :value: 'latest'
+
+      
+
+   .. py:attribute:: BY_NAME
+      :value: 'by-name'
+
+      
+
+
+.. py:function:: parse_args(args)
+
+   
+   Parses command-line arguments for video and GIF generation.
+
+   This function sets up the argument parser with various options for input modes,
+   input types, file paths, and parameters for GIF and video generation.
+
+   :param args: A list of command-line arguments to parse.
+   :type args: list
+
+   :returns: *Namespace* -- A Namespace object containing the parsed arguments.
+
+.. py:function:: execute_command(args)
+
+   
+   Executes the rendering process based on the parsed command-line arguments.
+
+   This function configures the rendering parameters and determines the input files
+   to process based on the specified input mode (latest or by name). It then calls
+   the ``render_file`` function for each input file.
+
+   :param args: A Namespace object containing the parsed command-line arguments.
+   :type args: Namespace
+

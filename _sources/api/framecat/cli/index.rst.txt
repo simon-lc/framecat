@@ -1,0 +1,12 @@
+:py:mod:`framecat.cli`
+======================
+
+.. py:module:: framecat.cli
+
+
+Module Contents
+---------------
+
+.. py:function:: main()
+
+

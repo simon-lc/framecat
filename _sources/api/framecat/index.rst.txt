@@ -1,0 +1,17 @@
+:py:mod:`framecat`
+==================
+
+.. py:module:: framecat
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   cli/index.rst
+   cli_interface/index.rst
+   rendering/index.rst
+
+
