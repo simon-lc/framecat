@@ -1,9 +1,8 @@
-# tyro
+# framecat
 
 |build| |nbsp| |docs| |nbsp| |coverage|
 
-:code:`framecat` is a tool for generating command-line interfaces and configuration
-objects in Python.
+:code:`framecat` provides simple tools to automate video and gif generation from frame sequences via a command-line interface.
 
 Our core API, :func:`tyro.cli()`,
 
