@@ -32,14 +32,14 @@ Try it quickly by following this [**tutorial**](create a link to quickstart page
    quickstart
 
 .. toctree::
-   :caption: Reference
+   :caption: API Reference
    :hidden:
    :maxdepth: 5
    :titlesonly:
    :glob:
 
-   reference/api/cli_interface
-   reference/api/rendering
+   reference/cli_interface
+   reference/rendering
 
 
 .. toctree::

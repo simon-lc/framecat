@@ -176,11 +176,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Tutorial</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../reference/api/cli_interface/">Command line interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../reference/api/rendering/">Rendering</a></li>
-</ul>
 <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../docs/">Building documentation</a></li>
@@ -219,7 +214,7 @@
         </div>
         <article role="main">
           <section id="module-framecat.rendering">
-<span id="framecat-rendering"></span><h1><a class="reference internal" href="../../../reference/api/rendering/#module-framecat.rendering" title="framecat.rendering"><code class="xref py py-mod docutils literal notranslate"><span class="pre">framecat.rendering</span></code></a><a class="headerlink" href="#module-framecat.rendering" title="Link to this heading">#</a></h1>
+<span id="framecat-rendering"></span><h1><a class="reference internal" href="../../../api_reference/rendering/#module-framecat.rendering" title="framecat.rendering"><code class="xref py py-mod docutils literal notranslate"><span class="pre">framecat.rendering</span></code></a><a class="headerlink" href="#module-framecat.rendering" title="Link to this heading">#</a></h1>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <dl class="py data">
@@ -575,7 +570,7 @@ Defaults to False.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="framecat.rendering.get_input_type">
-<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">get_input_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../reference/api/rendering/#framecat.rendering.InputType" title="framecat.rendering.InputType"><span class="pre">InputType</span></a></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#get_input_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.get_input_type" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">get_input_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../api_reference/rendering/#framecat.rendering.InputType" title="framecat.rendering.InputType"><span class="pre">InputType</span></a></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#get_input_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.get_input_type" title="Link to this definition">#</a></dt>
 <dd><p>Determines the input type based on the file extension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -588,14 +583,14 @@ Defaults to False.</p></li>
 <dd class="field-odd"><p><strong>ValueError</strong> – If the file extension is not recognized.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="../../../reference/api/rendering/#framecat.rendering.InputType" title="framecat.rendering.InputType">InputType</a></p>
+<dd class="field-even"><p><a class="reference internal" href="../../../api_reference/rendering/#framecat.rendering.InputType" title="framecat.rendering.InputType">InputType</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="framecat.rendering.render_file">
-<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">render_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../reference/api/rendering/#framecat.rendering.RenderingParameters" title="framecat.rendering.RenderingParameters"><span class="pre">RenderingParameters</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">RenderingParameters()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#render_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.render_file" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">render_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../api_reference/rendering/#framecat.rendering.RenderingParameters" title="framecat.rendering.RenderingParameters"><span class="pre">RenderingParameters</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">RenderingParameters()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#render_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.render_file" title="Link to this definition">#</a></dt>
 <dd><p>Renders a video or GIF from the specified file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -604,7 +599,7 @@ Defaults to False.</p></li>
 <li><p><strong>output_name</strong> (<em>str</em>) – Name for the output files (without extension).</p></li>
 <li><p><strong>output_folder</strong> (<em>str</em><em>, </em><em>optional</em>) – Directory for saving output files.
 Defaults to ~/Videos/framecat.</p></li>
-<li><p><strong>params</strong> (<a class="reference internal" href="../../../reference/api/rendering/#framecat.rendering.RenderingParameters" title="framecat.rendering.RenderingParameters"><em>RenderingParameters</em></a><em>, </em><em>optional</em>) – Parameters for rendering options.</p></li>
+<li><p><strong>params</strong> (<a class="reference internal" href="../../../api_reference/rendering/#framecat.rendering.RenderingParameters" title="framecat.rendering.RenderingParameters"><em>RenderingParameters</em></a><em>, </em><em>optional</em>) – Parameters for rendering options.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
