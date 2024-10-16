@@ -2,7 +2,7 @@ import os
 import glob
 import pytest
 import argparse
-from framecat.command import (
+from framecat.cli_interface import (
     execute_command,
     parse_args,
 )

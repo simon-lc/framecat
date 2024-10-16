@@ -1,5 +1,5 @@
 import sys
-from framecat.command import (
+from framecat.cli_interface import (
     parse_args,
     execute_command,
 )
