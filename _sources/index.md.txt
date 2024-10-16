@@ -1,8 +1,8 @@
 # tyro
 
-|build| |nbsp| |ruff| |nbsp| |mypy| |nbsp| |pyright| |nbsp| |coverage| |nbsp| |versions|
+|build| |nbsp| |docs| |nbsp| |coverage|
 
-:code:`tyro` is a tool for generating command-line interfaces and configuration
+:code:`framecat` is a tool for generating command-line interfaces and configuration
 objects in Python.
 
 Our core API, :func:`tyro.cli()`,
@@ -125,27 +125,16 @@ To get started, we recommend browsing the examples to the left.
 
 
 
-.. |build| image:: https://github.com/brentyi/tyro/actions/workflows/build.yml/badge.svg
+
+.. |build| image:: https://github.com/simon-lc/framecat/actions/workflows/build.yml/badge.svg
    :alt: Build status icon
-   :target: https://github.com/brentyi/tyro
-.. |mypy| image:: https://github.com/brentyi/tyro/actions/workflows/mypy.yml/badge.svg
-   :alt: Mypy status icon
-   :target: https://github.com/brentyi/tyro
-.. |pyright| image:: https://github.com/brentyi/tyro/actions/workflows/pyright.yml/badge.svg
-   :alt: Mypy status icon
-   :target: https://github.com/brentyi/tyro
-.. |ruff| image:: https://github.com/brentyi/tyro/actions/workflows/ruff.yml/badge.svg
-   :alt: Lint status icon
-   :target: https://github.com/brentyi/tyro
-.. |coverage| image:: https://codecov.io/gh/brentyi/tyro/branch/main/graph/badge.svg
+   :target: https://github.com/simon-lc/framecat
+.. |docs| image:: https://github.com/simon-lc/framecat/actions/workflows/docs.yml/badge.svg
+   :alt: Docs status icon
+   :target: https://github.com/simon-lc/framecat
+.. |coverage| image:: https://codecov.io/gh/simon-lc/framecat/graph/badge.svg?token=CUWTT7EK5E
    :alt: Test coverage status icon
-   :target: https://codecov.io/gh/brentyi/tyro
-.. |downloads| image:: https://pepy.tech/badge/tyro
-   :alt: Download count icon
-   :target: https://pypi.org/project/tyro/
-.. |versions| image:: https://img.shields.io/pypi/pyversions/tyro
-   :alt: Version icon
-   :target: https://pypi.org/project/tyro/
+   :target: https://github.com/simon-lc/framecat
 .. |nbsp| unicode:: 0xA0
    :trim:
 
