@@ -12,10 +12,10 @@
         gtag('js', new Date());
         gtag('config', 'G-??????');
     </script>
-    <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" />
+    <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Building documentation" href="../../../docs/" /><link rel="prev" title="Command line interface" href="../cli_interface/" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>framecat.rendering - framecat</title>
+        <title>Rendering - framecat</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b20cc3f5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -177,9 +177,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Tutorial</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../reference/api/cli_interface/">Command line interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../reference/api/rendering/">Rendering</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cli_interface/">Command line interface</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Rendering</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul>
@@ -218,24 +218,16 @@
           </label>
         </div>
         <article role="main">
-          <section id="module-framecat.rendering">
-<span id="framecat-rendering"></span><h1><a class="reference internal" href="../../../reference/api/rendering/#module-framecat.rendering" title="framecat.rendering"><code class="xref py py-mod docutils literal notranslate"><span class="pre">framecat.rendering</span></code></a><a class="headerlink" href="#module-framecat.rendering" title="Link to this heading">#</a></h1>
-<section id="module-contents">
-<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
-<dl class="py data">
-<dt class="sig sig-object py" id="framecat.rendering.handler">
-<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">handler</span></span><a class="headerlink" href="#framecat.rendering.handler" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="framecat.rendering.logger">
-<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#framecat.rendering.logger" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
+          <section id="rendering">
+<span id="id1"></span><h1>Rendering<a class="headerlink" href="#rendering" title="Link to this heading">#</a></h1>
+<p>The rendering module is responsible for generating video and GIF outputs from frame sequences.</p>
+<section id="id2">
+<h2>Rendering<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<dl class="py class" id="module-framecat.rendering">
 <dt class="sig sig-object py" id="framecat.rendering.InputType">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">InputType</span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#InputType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.InputType" title="Link to this definition">#</a></dt>
-<dd><p>Class to represent the different input file types supported.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to represent the different input file types supported.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="framecat.rendering.InputType.TAR">
 <span class="sig-name descname"><span class="pre">TAR</span></span><a class="headerlink" href="#framecat.rendering.InputType.TAR" title="Link to this definition">#</a></dt>
@@ -270,168 +262,13 @@
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">TAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tar'</span></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">MP4</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mp4'</span></em><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id2">
-<span class="sig-name descname"><span class="pre">GIF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gif'</span></em><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="framecat.rendering.rename_file">
-<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">rename_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#rename_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.rename_file" title="Link to this definition">#</a></dt>
-<dd><p>Renames a file to a new specified name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>file_path</strong> (<em>str</em>) – Path to the file to be renamed.</p></li>
-<li><p><strong>new_file_name</strong> (<em>str</em>) – New name for the file (including extension).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>str</em> – The path to the renamed file.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="framecat.rendering.get_latest_files">
-<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">get_latest_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'tar'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#get_latest_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.get_latest_files" title="Link to this definition">#</a></dt>
-<dd><p>Retrieves the latest modified files with a specified extension from a given folder.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>folder_path</strong> (<em>str</em>) – Path to the folder to search for files.</p></li>
-<li><p><strong>num_files</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of most recent files to return.
-Defaults to 1.</p></li>
-<li><p><strong>extension</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension to filter by.
-Defaults to “tar”.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>list</em> – A list of paths to the latest modified files with the specified extension.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ValueError</strong> – If the provided folder path does not exist.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="framecat.rendering.convert_frames_to_video">
-<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">convert_frames_to_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tar_file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'output.mp4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">framerate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conversion_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#convert_frames_to_video"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.convert_frames_to_video" title="Link to this definition">#</a></dt>
-<dd><p>Converts frames extracted from a TAR file into a video.</p>
-<p>You can pass arguments for the video conversion, for example,
-<code class="docutils literal notranslate"><span class="pre">conversion_args=(&quot;-pix_fmt&quot;,</span> <span class="pre">&quot;yuv420p&quot;)</span></code> to create videos playable in Windows.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>tar_file_path</strong> (<em>str</em>) – Path to the input TAR file containing frames.</p></li>
-<li><p><strong>output_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to save the output video.
-Defaults to “output.mp4”.</p></li>
-<li><p><strong>framerate</strong> (<em>int</em><em>, </em><em>optional</em>) – Frame rate for the output video. Defaults to 60.</p></li>
-<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to overwrite the output file if it exists.
-Defaults to False.</p></li>
-<li><p><strong>conversion_args</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Additional arguments for video conversion.
-Defaults to an empty tuple.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>str</em> – The path to the saved video.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>FileNotFoundError</strong> – If the input TAR file does not exist.</p></li>
-<li><p><strong>subprocess.CalledProcessError</strong> – If the FFMPEG command fails.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="framecat.rendering.convert_video_to_gif">
-<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">convert_video_to_gif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'output.gif'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">framerate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hq_colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#convert_video_to_gif"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.convert_video_to_gif" title="Link to this definition">#</a></dt>
-<dd><p>Converts a video file to a GIF.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>video_file_path</strong> (<em>str</em>) – Path to the input video file.</p></li>
-<li><p><strong>output_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to save the output GIF.
-Defaults to “output.gif”.</p></li>
-<li><p><strong>framerate</strong> (<em>int</em><em>, </em><em>optional</em>) – Frame rate for the GIF. Defaults to 30.</p></li>
-<li><p><strong>start_time</strong> (<em>float</em><em>, </em><em>optional</em>) – Start time for the conversion in seconds. Defaults to 0.0.</p></li>
-<li><p><strong>duration</strong> (<em>float</em><em>, </em><em>optional</em>) – Duration of the output GIF in seconds. Defaults to 1000.0.</p></li>
-<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to overwrite the output file if it exists.
-Defaults to False.</p></li>
-<li><p><strong>width</strong> (<em>int</em><em>, </em><em>optional</em>) – Width of the output GIF. Defaults to -1 (no resizing).</p></li>
-<li><p><strong>height</strong> (<em>int</em><em>, </em><em>optional</em>) – Height of the output GIF. Defaults to -1 (no resizing).</p></li>
-<li><p><strong>hq_colors</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use high-quality colors for the GIF. Defaults to False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>str</em> – The path to the saved GIF.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>FileNotFoundError</strong> – If the input video file does not exist.</p></li>
-<li><p><strong>subprocess.CalledProcessError</strong> – If the FFMPEG command fails.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="framecat.rendering.compress_gif">
-<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">compress_gif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#compress_gif"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.compress_gif" title="Link to this definition">#</a></dt>
-<dd><p>Compresses a GIF file to reduce its size with lossy optimization.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>file_path</strong> (<em>str</em>) – Path to the input GIF file.</p></li>
-<li><p><strong>output_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to save the compressed GIF.
-If None, defaults to <code class="docutils literal notranslate"><span class="pre">&lt;input_file&gt;_lossy.gif</span></code>.</p></li>
-<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to overwrite the output file if it exists.
-Defaults to False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>str</em> – The path to the saved compressed GIF.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>FileNotFoundError</strong> – If the input file does not exist.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="framecat.rendering.RenderingParameters">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">RenderingParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rename_input_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gif_framerate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hq_colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generate_lossy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_framerate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_conversion_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/framecat/rendering/#RenderingParameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.RenderingParameters" title="Link to this definition">#</a></dt>
-<dd><p>Class to hold parameters for rendering operations.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to hold parameters for rendering operations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -574,8 +411,103 @@ Defaults to False.</p></li>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="framecat.rendering.compress_gif">
+<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">compress_gif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#compress_gif"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.compress_gif" title="Link to this definition">#</a></dt>
+<dd><p>Compresses a GIF file to reduce its size with lossy optimization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Path to the input GIF file.</p></li>
+<li><p><strong>output_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to save the compressed GIF.
+If None, defaults to <code class="docutils literal notranslate"><span class="pre">&lt;input_file&gt;_lossy.gif</span></code>.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to overwrite the output file if it exists.
+Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em> – The path to the saved compressed GIF.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – If the input file does not exist.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="framecat.rendering.convert_frames_to_video">
+<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">convert_frames_to_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tar_file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'output.mp4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">framerate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">60</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conversion_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#convert_frames_to_video"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.convert_frames_to_video" title="Link to this definition">#</a></dt>
+<dd><p>Converts frames extracted from a TAR file into a video.</p>
+<p>You can pass arguments for the video conversion, for example,
+<code class="docutils literal notranslate"><span class="pre">conversion_args=(&quot;-pix_fmt&quot;,</span> <span class="pre">&quot;yuv420p&quot;)</span></code> to create videos playable in Windows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tar_file_path</strong> (<em>str</em>) – Path to the input TAR file containing frames.</p></li>
+<li><p><strong>output_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to save the output video.
+Defaults to “output.mp4”.</p></li>
+<li><p><strong>framerate</strong> (<em>int</em><em>, </em><em>optional</em>) – Frame rate for the output video. Defaults to 60.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to overwrite the output file if it exists.
+Defaults to False.</p></li>
+<li><p><strong>conversion_args</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Additional arguments for video conversion.
+Defaults to an empty tuple.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em> – The path to the saved video.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If the input TAR file does not exist.</p></li>
+<li><p><strong>subprocess.CalledProcessError</strong> – If the FFMPEG command fails.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="framecat.rendering.convert_video_to_gif">
+<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">convert_video_to_gif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'output.gif'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">framerate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hq_colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#convert_video_to_gif"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.convert_video_to_gif" title="Link to this definition">#</a></dt>
+<dd><p>Converts a video file to a GIF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>video_file_path</strong> (<em>str</em>) – Path to the input video file.</p></li>
+<li><p><strong>output_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to save the output GIF.
+Defaults to “output.gif”.</p></li>
+<li><p><strong>framerate</strong> (<em>int</em><em>, </em><em>optional</em>) – Frame rate for the GIF. Defaults to 30.</p></li>
+<li><p><strong>start_time</strong> (<em>float</em><em>, </em><em>optional</em>) – Start time for the conversion in seconds. Defaults to 0.0.</p></li>
+<li><p><strong>duration</strong> (<em>float</em><em>, </em><em>optional</em>) – Duration of the output GIF in seconds. Defaults to 1000.0.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to overwrite the output file if it exists.
+Defaults to False.</p></li>
+<li><p><strong>width</strong> (<em>int</em><em>, </em><em>optional</em>) – Width of the output GIF. Defaults to -1 (no resizing).</p></li>
+<li><p><strong>height</strong> (<em>int</em><em>, </em><em>optional</em>) – Height of the output GIF. Defaults to -1 (no resizing).</p></li>
+<li><p><strong>hq_colors</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use high-quality colors for the GIF. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em> – The path to the saved GIF.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If the input video file does not exist.</p></li>
+<li><p><strong>subprocess.CalledProcessError</strong> – If the FFMPEG command fails.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="framecat.rendering.get_input_type">
-<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">get_input_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../reference/api/rendering/#framecat.rendering.InputType" title="framecat.rendering.InputType"><span class="pre">InputType</span></a></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#get_input_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.get_input_type" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">get_input_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#framecat.rendering.InputType" title="framecat.rendering.InputType"><span class="pre">InputType</span></a></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#get_input_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.get_input_type" title="Link to this definition">#</a></dt>
 <dd><p>Determines the input type based on the file extension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -588,14 +520,60 @@ Defaults to False.</p></li>
 <dd class="field-odd"><p><strong>ValueError</strong> – If the file extension is not recognized.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="../../../reference/api/rendering/#framecat.rendering.InputType" title="framecat.rendering.InputType">InputType</a></p>
+<dd class="field-even"><p><a class="reference internal" href="#framecat.rendering.InputType" title="framecat.rendering.InputType"><em>InputType</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="framecat.rendering.get_latest_files">
+<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">get_latest_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'tar'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#get_latest_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.get_latest_files" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves the latest modified files with a specified extension from a given folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folder_path</strong> (<em>str</em>) – Path to the folder to search for files.</p></li>
+<li><p><strong>num_files</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of most recent files to return.
+Defaults to 1.</p></li>
+<li><p><strong>extension</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension to filter by.
+Defaults to “tar”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>list</em> – A list of paths to the latest modified files with the specified extension.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the provided folder path does not exist.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="framecat.rendering.rename_file">
+<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">rename_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#rename_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.rename_file" title="Link to this definition">#</a></dt>
+<dd><p>Renames a file to a new specified name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Path to the file to be renamed.</p></li>
+<li><p><strong>new_file_name</strong> (<em>str</em>) – New name for the file (including extension).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em> – The path to the renamed file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="framecat.rendering.render_file">
-<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">render_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../reference/api/rendering/#framecat.rendering.RenderingParameters" title="framecat.rendering.RenderingParameters"><span class="pre">RenderingParameters</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">RenderingParameters()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#render_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.render_file" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">framecat.rendering.</span></span><span class="sig-name descname"><span class="pre">render_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_name:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_folder:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params:</span> <span class="pre">~framecat.rendering.RenderingParameters</span> <span class="pre">=</span> <span class="pre">&lt;framecat.rendering.RenderingParameters</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/framecat/rendering/#render_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.rendering.render_file" title="Link to this definition">#</a></dt>
 <dd><p>Renders a video or GIF from the specified file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -604,7 +582,7 @@ Defaults to False.</p></li>
 <li><p><strong>output_name</strong> (<em>str</em>) – Name for the output files (without extension).</p></li>
 <li><p><strong>output_folder</strong> (<em>str</em><em>, </em><em>optional</em>) – Directory for saving output files.
 Defaults to ~/Videos/framecat.</p></li>
-<li><p><strong>params</strong> (<a class="reference internal" href="../../../reference/api/rendering/#framecat.rendering.RenderingParameters" title="framecat.rendering.RenderingParameters"><em>RenderingParameters</em></a><em>, </em><em>optional</em>) – Parameters for rendering options.</p></li>
+<li><p><strong>params</strong> (<a class="reference internal" href="#framecat.rendering.RenderingParameters" title="framecat.rendering.RenderingParameters"><em>RenderingParameters</em></a><em>, </em><em>optional</em>) – Parameters for rendering options.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -624,8 +602,26 @@ Defaults to ~/Videos/framecat.</p></li>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="../../../docs/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Building documentation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../cli_interface/">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Command line interface</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -663,24 +659,14 @@ Defaults to ~/Videos/framecat.</p></li>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">framecat.rendering</span></code></a><ul>
-<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
-<li><a class="reference internal" href="#framecat.rendering.handler"><code class="docutils literal notranslate"><span class="pre">handler</span></code></a></li>
-<li><a class="reference internal" href="#framecat.rendering.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
+<li><a class="reference internal" href="#">Rendering</a><ul>
+<li><a class="reference internal" href="#id2">Rendering</a><ul>
 <li><a class="reference internal" href="#framecat.rendering.InputType"><code class="docutils literal notranslate"><span class="pre">InputType</span></code></a><ul>
 <li><a class="reference internal" href="#framecat.rendering.InputType.TAR"><code class="docutils literal notranslate"><span class="pre">InputType.TAR</span></code></a></li>
 <li><a class="reference internal" href="#framecat.rendering.InputType.MP4"><code class="docutils literal notranslate"><span class="pre">InputType.MP4</span></code></a></li>
 <li><a class="reference internal" href="#framecat.rendering.InputType.GIF"><code class="docutils literal notranslate"><span class="pre">InputType.GIF</span></code></a></li>
-<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">InputType.TAR</span></code></a></li>
-<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">InputType.MP4</span></code></a></li>
-<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">InputType.GIF</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#framecat.rendering.rename_file"><code class="docutils literal notranslate"><span class="pre">rename_file()</span></code></a></li>
-<li><a class="reference internal" href="#framecat.rendering.get_latest_files"><code class="docutils literal notranslate"><span class="pre">get_latest_files()</span></code></a></li>
-<li><a class="reference internal" href="#framecat.rendering.convert_frames_to_video"><code class="docutils literal notranslate"><span class="pre">convert_frames_to_video()</span></code></a></li>
-<li><a class="reference internal" href="#framecat.rendering.convert_video_to_gif"><code class="docutils literal notranslate"><span class="pre">convert_video_to_gif()</span></code></a></li>
-<li><a class="reference internal" href="#framecat.rendering.compress_gif"><code class="docutils literal notranslate"><span class="pre">compress_gif()</span></code></a></li>
 <li><a class="reference internal" href="#framecat.rendering.RenderingParameters"><code class="docutils literal notranslate"><span class="pre">RenderingParameters</span></code></a><ul>
 <li><a class="reference internal" href="#framecat.rendering.RenderingParameters.overwrite"><code class="docutils literal notranslate"><span class="pre">RenderingParameters.overwrite</span></code></a></li>
 <li><a class="reference internal" href="#framecat.rendering.RenderingParameters.rename_input_file"><code class="docutils literal notranslate"><span class="pre">RenderingParameters.rename_input_file</span></code></a></li>
@@ -695,7 +681,12 @@ Defaults to ~/Videos/framecat.</p></li>
 <li><a class="reference internal" href="#framecat.rendering.RenderingParameters.video_conversion_args"><code class="docutils literal notranslate"><span class="pre">RenderingParameters.video_conversion_args</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#framecat.rendering.compress_gif"><code class="docutils literal notranslate"><span class="pre">compress_gif()</span></code></a></li>
+<li><a class="reference internal" href="#framecat.rendering.convert_frames_to_video"><code class="docutils literal notranslate"><span class="pre">convert_frames_to_video()</span></code></a></li>
+<li><a class="reference internal" href="#framecat.rendering.convert_video_to_gif"><code class="docutils literal notranslate"><span class="pre">convert_video_to_gif()</span></code></a></li>
 <li><a class="reference internal" href="#framecat.rendering.get_input_type"><code class="docutils literal notranslate"><span class="pre">get_input_type()</span></code></a></li>
+<li><a class="reference internal" href="#framecat.rendering.get_latest_files"><code class="docutils literal notranslate"><span class="pre">get_latest_files()</span></code></a></li>
+<li><a class="reference internal" href="#framecat.rendering.rename_file"><code class="docutils literal notranslate"><span class="pre">rename_file()</span></code></a></li>
 <li><a class="reference internal" href="#framecat.rendering.render_file"><code class="docutils literal notranslate"><span class="pre">render_file()</span></code></a></li>
 </ul>
 </li>

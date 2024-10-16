@@ -12,10 +12,10 @@
         gtag('js', new Date());
         gtag('config', 'G-??????');
     </script>
-    <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" />
+    <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Rendering" href="../rendering/" /><link rel="prev" title="Tutorial" href="../../../quickstart/" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
-        <title>framecat.cli - framecat</title>
+        <title>Command line interface - framecat</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b20cc3f5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -177,9 +177,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Tutorial</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../reference/api/cli_interface/">Command line interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../reference/api/rendering/">Rendering</a></li>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rendering/">Rendering</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul>
@@ -218,14 +218,70 @@
           </label>
         </div>
         <article role="main">
-          <section id="module-framecat.cli">
-<span id="framecat-cli"></span><h1><a class="reference internal" href="#module-framecat.cli" title="framecat.cli"><code class="xref py py-mod docutils literal notranslate"><span class="pre">framecat.cli</span></code></a><a class="headerlink" href="#module-framecat.cli" title="Link to this heading">#</a></h1>
-<section id="module-contents">
-<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+          <section id="command-line-interface">
+<span id="cli-interface"></span><h1>Command line interface<a class="headerlink" href="#command-line-interface" title="Link to this heading">#</a></h1>
+<p>The CLI commands module provides command-line interface functionality for Framecat.</p>
+<section id="id1">
+<h2>Command line interface<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<dl class="py class" id="module-framecat.cli_interface">
+<dt class="sig sig-object py" id="framecat.cli_interface.InputMode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framecat.cli_interface.</span></span><span class="sig-name descname"><span class="pre">InputMode</span></span><a class="reference internal" href="../../../_modules/framecat/cli_interface/#InputMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.cli_interface.InputMode" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to represent the different modes for input selection.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framecat.cli_interface.InputMode.LATEST">
+<span class="sig-name descname"><span class="pre">LATEST</span></span><a class="headerlink" href="#framecat.cli_interface.InputMode.LATEST" title="Link to this definition">#</a></dt>
+<dd><p>Represents the mode to select the latest input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framecat.cli_interface.InputMode.BY_NAME">
+<span class="sig-name descname"><span class="pre">BY_NAME</span></span><a class="headerlink" href="#framecat.cli_interface.InputMode.BY_NAME" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Represents</span> <span class="pre">the</span> <span class="pre">mode</span> <span class="pre">to</span> <span class="pre">select</span> <span class="pre">input</span> <span class="pre">by</span> <span class="pre">name.</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py function">
-<dt class="sig sig-object py" id="framecat.cli.main">
-<span class="sig-prename descclassname"><span class="pre">framecat.cli.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/framecat/cli/#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.cli.main" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="framecat.cli_interface.execute_command">
+<span class="sig-prename descclassname"><span class="pre">framecat.cli_interface.</span></span><span class="sig-name descname"><span class="pre">execute_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/framecat/cli_interface/#execute_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.cli_interface.execute_command" title="Link to this definition">#</a></dt>
+<dd><p>Executes the rendering process based on the parsed command-line arguments.</p>
+<p>This function configures the rendering parameters and determines the input files
+to process based on the specified input mode (latest or by name). It then calls
+the <code class="docutils literal notranslate"><span class="pre">render_file</span></code> function for each input file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>Namespace</em>) – A Namespace object containing the parsed command-line arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="framecat.cli_interface.parse_args">
+<span class="sig-prename descclassname"><span class="pre">framecat.cli_interface.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/framecat/cli_interface/#parse_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#framecat.cli_interface.parse_args" title="Link to this definition">#</a></dt>
+<dd><p>Parses command-line arguments for video and GIF generation.</p>
+<p>This function sets up the argument parser with various options for input modes,
+input types, file paths, and parameters for GIF and video generation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>list</em>) – A list of command-line arguments to parse.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Namespace</em> – A Namespace object containing the parsed arguments.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 </section>
@@ -235,8 +291,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="../rendering/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Rendering</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../../../quickstart/">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Tutorial</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -274,9 +348,15 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">framecat.cli</span></code></a><ul>
-<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
-<li><a class="reference internal" href="#framecat.cli.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#">Command line interface</a><ul>
+<li><a class="reference internal" href="#id1">Command line interface</a><ul>
+<li><a class="reference internal" href="#framecat.cli_interface.InputMode"><code class="docutils literal notranslate"><span class="pre">InputMode</span></code></a><ul>
+<li><a class="reference internal" href="#framecat.cli_interface.InputMode.LATEST"><code class="docutils literal notranslate"><span class="pre">InputMode.LATEST</span></code></a></li>
+<li><a class="reference internal" href="#framecat.cli_interface.InputMode.BY_NAME"><code class="docutils literal notranslate"><span class="pre">InputMode.BY_NAME</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#framecat.cli_interface.execute_command"><code class="docutils literal notranslate"><span class="pre">execute_command()</span></code></a></li>
+<li><a class="reference internal" href="#framecat.cli_interface.parse_args"><code class="docutils literal notranslate"><span class="pre">parse_args()</span></code></a></li>
 </ul>
 </li>
 </ul>
