@@ -26,6 +26,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+dev = [
+]
+
 
 [tool.coverage.run]
 source = ["./src/framecat"]
