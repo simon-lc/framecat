@@ -20,7 +20,7 @@ source .docs_venv/bin/activate
 Install documentation dependencies
 ```
 pip install uv
-uv pip install --system -r docs/requirements.txt
+uv pip install -r docs/requirements.txt
 ```
 
 Build the documentation
