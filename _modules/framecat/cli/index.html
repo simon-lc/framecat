@@ -15,7 +15,7 @@
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>framecat.cli - framecat</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b20cc3f5" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5349f25f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/compact_table_header.css?v=932cb7ac" />
@@ -217,8 +217,8 @@
         </div>
         <article role="main">
           <h1>Source code for framecat.cli</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">framecat.cli_interface</span> <span class="kn">import</span> <span class="p">(</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">framecat.cli_interface</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">parse_args</span><span class="p">,</span>
     <span class="n">execute_command</span><span class="p">,</span>
 <span class="p">)</span>
@@ -226,7 +226,7 @@
 
 <div class="viewcode-block" id="main">
 <a class="viewcode-back" href="../../../api/framecat/cli/#framecat.cli.main">[docs]</a>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">args</span> <span class="o">=</span> <span class="n">parse_args</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
     <span class="n">execute_command</span><span class="p">(</span><span class="n">args</span><span class="p">)</span></div>
 
